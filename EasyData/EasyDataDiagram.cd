@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EasyData.Core.EasyDataBase&lt;T&gt;">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAgAAAQAAAAACAAAEAQAAAAAAAAAAE=</HashCode>
+      <FileName>Core\EasyDataBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Attributes.BelongsToAttribute">
+    <Position X="17.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAEAIAEBACAAAAAFCggIAwIIRAIACAQAAABIEAAA=</HashCode>
+      <FileName>Attributes\BelongsToAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Attributes.EasyDataAttribute">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAAAAABAAIAAAiAAAAAQQAAEACEAACACAAABCAAAAAA=</HashCode>
+      <FileName>Attributes\EasyDataAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Attributes.HasAndBelongsToManyAttribute">
+    <Position X="13.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAIAAAAAEAAIgAAAAAAABAgAgAKAQAAAA=</HashCode>
+      <FileName>Attributes\HasAndBelongsToManyAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Attributes.KeyPropertyAttribute">
+    <Position X="19.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAA=</HashCode>
+      <FileName>Attributes\KeyPropertyAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Attributes.OneToOneAttribute" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACgEAgAEEAAAASAIAAAAgAAAAAAIAAAA=</HashCode>
+      <FileName>Attributes\OneToOneAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Attributes.PrimaryKeyAttribute">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAABQAIQAACFAAARAAAgAAAAABIAAAAIAAAA=</HashCode>
+      <FileName>Attributes\PrimaryKeyAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Attributes.PropertyAttribute">
+    <Position X="19.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEgAAAAAAIUAAAFiAABAgIAgAEABBIEAABAAAAA=</HashCode>
+      <FileName>Attributes\PropertyAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Attributes.RelationAttribute">
+    <Position X="15.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAgBAAEpQwwAMUAMABAAAAgEAIAKBAAA=</HashCode>
+      <FileName>Attributes\RelationAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.EasySave&lt;T&gt;">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAIACAEhAAASAAACEABAEIABAAQAAAAgEEAAAABA=</HashCode>
+      <FileName>EasySave.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.EasyDelete&lt;T&gt;">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAgAAAAAAAAIQFAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EasyDelete.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.EasySelect&lt;T&gt;">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAQAAAAJABIAAEAAAABAAAAAAA=</HashCode>
+      <FileName>EasySelect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.EasyUpdate&lt;T&gt;">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAABAAAgEAAAAAAAEADAAIABACAAAAAAAAAAAABE=</HashCode>
+      <FileName>EasyUpdate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.EasySession">
+    <Position X="0.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAACCACAAJCUEAAAAAAgAIAAEAABAQAAAgCEABBA=</HashCode>
+      <FileName>EasySession.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasyData.DB.Sql.SqlDBTypes">
+    <Position X="2.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DB\Sql\SqlDBTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.DB.Sql.SqlParameters">
+    <Position X="2.5" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DB\Sql\SqlParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.DB.MySql.MySqlDBTypes">
+    <Position X="5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DB\MySql\MySqlDBTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.DB.MySql.MySqlParameters">
+    <Position X="4.75" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DB\MySql\MySqlParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.DB.Oracle.OracleDBTypes">
+    <Position X="7.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DB\Oracle\OracleDBTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.DB.Oracle.OracleParameters">
+    <Position X="7" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DB\Oracle\OracleParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Query.QueryImpl">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBAEJIAAIEAAAQCAkAgAgAAIgBBAwAAAAEgQACABAA=</HashCode>
+      <FileName>Query\QueryImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EasyData.Query.ObjectQuery">
+    <Position X="9.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAACAAAAAAAAAAAoAAAAAAA=</HashCode>
+      <FileName>Query\ObjectQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyData.Core.CheckSQLDate">
+    <Position X="5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\CheckSQLDate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="EasyData.Query.IQuery">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBAEJIAAAEAAAQAAkAAAAAAIABBAAAAAAEgQACABAA=</HashCode>
+      <FileName>Query\IQuery.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="EasyData.FlushAction">
+    <Position X="7.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>EasySession.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EasyData.Attributes.CascadeEnum">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAIAAAAUAAAA=</HashCode>
+      <FileName>Attributes\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EasyData.Attributes.FetchEnum">
+    <Position X="13.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAgAAAAAAAAAAAAAAAAAAAAEQAAAAAA=</HashCode>
+      <FileName>Attributes\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EasyData.Attributes.ManyRelationCascadeEnum">
+    <Position X="13.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAIAAAAUAAAA=</HashCode>
+      <FileName>Attributes\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EasyData.Attributes.NotFoundBehaviour">
+    <Position X="13.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAIAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Attributes\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EasyData.Attributes.PrimaryKeyType">
+    <Position X="19.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAIAAAAAAAAABAAAAEAAAAEAAgA=</HashCode>
+      <FileName>Attributes\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EasyData.Attributes.RelationType">
+    <Position X="19.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABgABAAAAAAAAAAAAAABAAAAAAAAAAAIAAI=</HashCode>
+      <FileName>Attributes\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

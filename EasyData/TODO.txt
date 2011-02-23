@@ -1,0 +1,22 @@
+﻿DEVELOPMENT
+===================================================================================================
+# Cascading options when save,update and delete
+# Add all data types for MSSQL, MySQL and Oracle databases and map them to VS data types
+# Check other properties in attribute classes and implement related functionalies
+# Enhance the query module by identifying the table and operation (CRUD) automatically 
+# Check filter by property methods for DateTime type properties and where clause parameters
+# Add all comments
+# Make default load option as simple, instead none
+# Ability to access normal properties without property attribute
+
+
+TESTING
+===================================================================================================
+# Write test cases for all methods
+
+
+RESEARCH & DEVELOPMENT
+===================================================================================================
+# Find a method to minimize the redundent work due to the multiple DBs
+# Develop an Object Query Language such as LINQ
+# Export functionality to xml or json

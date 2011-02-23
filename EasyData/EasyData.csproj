@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2D21A749-2A1E-4317-BAA6-C94408A8340B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EasyData</RootNamespace>
+    <AssemblyName>EasyData</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\EasyData.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Devart.Data, Version=5.0.170.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Devart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.MySql, Version=6.0.69.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Devart.Data.MySql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\BelongsToAttribute.cs" />
+    <Compile Include="Attributes\CompositeKeyAttribute.cs" />
+    <Compile Include="Attributes\EasyDataAttribute.cs" />
+    <Compile Include="Attributes\Enums.cs" />
+    <Compile Include="Attributes\HasAndBelongsToManyAttribute.cs" />
+    <Compile Include="Attributes\HasManyAttribute.cs" />
+    <Compile Include="Attributes\KeyPropertyAttribute.cs" />
+    <Compile Include="Attributes\NestedAttribute.cs" />
+    <Compile Include="Attributes\OneToOneAttribute.cs" />
+    <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
+    <Compile Include="Core\CheckGuid.cs" />
+    <Compile Include="Core\CheckSQLDate.cs" />
+    <Compile Include="Core\EasyDataBase.cs" />
+    <Compile Include="Core\EasyDataBase.Generic.cs" />
+    <Compile Include="DB\DataReader.cs" />
+    <Compile Include="DB\MySql\MySqlDBTypes.cs" />
+    <Compile Include="DB\MySql\MySqlParameters.cs" />
+    <Compile Include="DB\Oracle\OracleDBTypes.cs" />
+    <Compile Include="DB\Oracle\OracleParameters.cs" />
+    <Compile Include="DB\Sql\SqlDBTypes.cs" />
+    <Compile Include="DB\Sql\SqlParameters.cs" />
+    <Compile Include="EasyDelete.cs" />
+    <Compile Include="EasySave.cs" />
+    <Compile Include="EasySelect.cs" />
+    <Compile Include="EasySession.cs" />
+    <Compile Include="EasyUpdate.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Attributes\PropertyAttribute.cs" />
+    <Compile Include="Attributes\RelationAttribute.cs" />
+    <Compile Include="Query\Enums.cs" />
+    <Compile Include="Query\IFrom.cs" />
+    <Compile Include="Query\IQuery.cs" />
+    <Compile Include="Query\ObjectQuery.cs" />
+    <Compile Include="Query\QueryImpl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EasyDataDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EasyQuery\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

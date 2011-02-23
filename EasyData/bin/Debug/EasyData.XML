@@ -1,0 +1,2590 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EasyData</name>
+    </assembly>
+    <members>
+        <member name="T:EasyData.DB.Sql.SqlDBTypes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.DB.Sql.SqlDBTypes.GetDbType(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="DataType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.Attributes.HasManyAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EasyData.Attributes.RelationAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.RelationType">
+            <summary>
+            Gets or sets the type of the relation.
+            </summary>
+            <value>The type of the relation.</value>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.MapType">
+            <summary>
+            Gets or sets the type of the map.
+            </summary>
+            <value>The type of the map.</value>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.Table">
+            <summary>
+            Gets or sets the table for this relation
+            </summary>
+            <value>The table.</value>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.Schema">
+            <summary>
+            Gets or sets the schema for this relation (dbo., etc)
+            </summary>
+            <value>The schema name.</value>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.Inverse">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:EasyData.Attributes.RelationAttribute"/> is inverse.
+            </summary>
+            <value><c>true</c> if inverse; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.Cascade">
+            <summary>
+            Gets or sets the cascade options for this <see cref="T:EasyData.Attributes.RelationAttribute"/>
+            </summary>
+            <value>The cascade.</value>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.OrderBy">
+            <summary>
+            Gets or sets the order by clause for this relation. This is a SQL order, not HQL.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.Where">
+            <summary>
+            Gets or sets the where clause for this relation
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.Sort">
+            <summary>
+            Only used with sets. The value can be <c>unsorted</c>, <c>natural</c> and the name of a class implementing <c>System.Collections.IComparer</c>
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.Index">
+            <summary>
+            Only used with maps or lists
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.IndexType">
+            <summary>
+            Only used with maps
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.Element">
+            <summary>
+            Use for simple types.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.NotFoundBehaviour">
+            <summary>
+            Gets or sets the way broken relations are handled.
+            </summary>
+            <value>The behaviour.</value>
+        </member>
+        <member name="P:EasyData.Attributes.RelationAttribute.PartialLoad">
+            <summary>
+            Gets or sets the loading type.
+            </summary>
+            <value>The loading type.</value>
+        </member>
+        <member name="F:EasyData.Attributes.HasManyAttribute.keyColumn">
+            <summary>
+            The key column
+            Cannot exist if compositeKeyColumns has a value
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.HasManyAttribute.compositeKeyColumns">
+            <summary>
+            The composite columns
+            Cannot exist with keyColumn != null
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.HasManyAttribute.hasDependentObjects">
+            <summary>
+            Whether the target type is for dependent objects or not
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.HasManyAttribute.fetchMethod">
+            <summary>
+            Whether we do outer join fetching for this collection
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.HasManyAttribute.customCollectionType">
+            <summary>
+            Provides a custom collection type.
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.HasManyAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.HasManyAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.HasManyAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.HasManyAttribute"/> class.
+            </summary>
+            <param name="mapType">Type of the map.</param>
+        </member>
+        <member name="M:EasyData.Attributes.HasManyAttribute.#ctor(System.Type,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.HasManyAttribute"/> class.
+            </summary>
+            <param name="mapType">Type of items in this association</param>
+            <param name="keyColumn">The key column.</param>
+            <param name="table">The table.</param>
+        </member>
+        <member name="P:EasyData.Attributes.HasManyAttribute.ColumnKey">
+            <summary>
+            Gets or sets the key column name.
+            </summary>
+            <value>The column key.</value>
+        </member>
+        <member name="P:EasyData.Attributes.HasManyAttribute.CompositeKeyColumnKeys">
+            <summary>
+            Gets or sets the names of the column in composite key scenarios.
+            </summary>
+            <value>The composite key column keys.</value>
+        </member>
+        <member name="P:EasyData.Attributes.HasManyAttribute.DependentObjects">
+            <summary>
+            Whether or not the target type is a dependent object.
+            </summary>
+            <value>true = the target type is a dependent object</value>
+        </member>
+        <member name="P:EasyData.Attributes.HasManyAttribute.Fetch">
+            <summary>
+            Chooses between outer-join fetching
+            or sequential select fetching.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.HasManyAttribute.CollectionType">
+            <summary>
+            Provides a custom collection type.
+            </summary>
+        </member>
+        <member name="T:EasyData.Attributes.BelongsToAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.BelongsToAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.BelongsToAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.BelongsToAttribute.#ctor(System.String)">
+            <summary>
+            Indicates the name of the column to be used on the association.
+            Usually the name of the foreign key field on the underlying database.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.Type">
+            <summary>
+            Defines the target type of the association. It's usually inferred from the property type.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.Column">
+            <summary>
+            Defines the column used by association (usually a foreign key)
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.CompositeKeyColumns">
+            <summary>
+            Defines the Composite Key columns used by association (aka Natural Keys).
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.Cascade">
+            <summary>
+            Defines the cascading behavior of this association.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.Fetch">
+            <summary>
+            Chooses between outer-join fetching
+            or sequential select fetching.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.PropertyRef">
+            <summary>
+            The name of a property of the 
+            associated class that is joined to the primary key 
+            of this class. If not specified, the primary key of 
+            the associated class is used.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.Update">
+            <summary>
+            Set to <c>false</c> to ignore this association when updating entities of this EasyData class.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.Insert">
+            <summary>
+            Set to <c>false</c> to ignore this association when inserting entities of this EasyData class.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.NotNull">
+            <summary>
+            Indicates whether this association allows nulls or not.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.Unique">
+            <summary>
+            Indicates whether this association is unique.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.NotFoundBehaviour">
+            <summary>
+            Gets or sets the way broken relations are handled.
+            </summary>
+            <value>The behaviour.</value>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.UniqueKey">
+            <summary>
+            A unique-key attribute can be used to group columns 
+            in a single unit key constraint. 
+            </summary>
+            <value>unique key name</value>
+            <remarks>
+            Currently, the 
+            specified value of the unique-key attribute is not 
+            used to name the constraint, only to group the columns 
+            in the mapping file.
+            </remarks>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.ForeignKey">
+            <summary>
+            Gets and sets the name of the foreign key constraint 
+            generated for an association.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.BelongsToAttribute.PartialLoad">
+            <summary>
+            Gets or sets the loading type.
+            </summary>
+            <value>The loading type.</value>
+        </member>
+        <member name="T:EasyData.DB.MySql.MySqlParameters">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.DB.MySql.MySqlParameters.CreateInputParameter(System.String,Devart.Data.MySql.MySqlType,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.MySql.MySqlParameters.CreateOutputParameter(System.String,Devart.Data.MySql.MySqlType)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.MySql.MySqlParameters.CreateOutputParameter(System.String,Devart.Data.MySql.MySqlType,System.Data.ParameterDirection)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <param name="Direction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.MySql.MySqlParameters.CreateInputParameter(System.String,Devart.Data.MySql.MySqlType,System.Object,System.Data.ParameterDirection)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <param name="Value"></param>
+            <param name="Direction"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.Attributes.OneToOneAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.OneToOneAttribute.MapType">
+            <summary>
+            Allows one to reference a different type
+            than the property type
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.OneToOneAttribute.Cascade">
+            <summary>
+            Specifies which operations should be 
+            cascaded from the parent object to the associated object.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.OneToOneAttribute.Fetch">
+            <summary>
+            Chooses between outer-join fetching 
+            or sequential select fetching.
+            </summary>
+            <remarks>
+            Defaults to <see cref="F:EasyData.Attributes.FetchEnum.Select"/>
+            </remarks>
+        </member>
+        <member name="P:EasyData.Attributes.OneToOneAttribute.PropertyRef">
+            <summary>
+            The name of a property of the 
+            associated class that is joined to the primary key 
+            of this class. If not specified, the primary key of 
+            the associated class is used.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.OneToOneAttribute.Constrained">
+            <summary>
+            Specifies that a foreign key 
+            constraint on the primary key of the mapped table 
+            references the table of the associated class. 
+            This option affects the order in which Save() and 
+            Delete() are cascaded (and is also used by the 
+            schema export tool).
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.OneToOneAttribute.ForeignKey">
+            <summary>
+            Gets or sets the name of the foreign key constraint generated for 
+            an association. EasyData will only use the ForeignKey name one 
+            the inherited class and Constrained = true.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.OneToOneAttribute.PartialLoad">
+            <summary>
+            Gets or sets the loading type.
+            </summary>
+            <value>The loading type.</value>
+        </member>
+        <member name="M:EasyData.Query.ObjectQuery.DeleteQuery(System.String,EasyData.EasySession)">
+            <summary>
+            
+            </summary>
+            <param name="query"></param>
+            <param name="easySession"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Query.ObjectQuery.DeleteSP(System.String,EasyData.EasySession)">
+            <summary>
+            
+            </summary>
+            <param name="spname"></param>
+            <param name="easySession"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Query.ObjectQuery.UpdateQuery(System.String,EasyData.EasySession)">
+            <summary>
+            
+            </summary>
+            <param name="query"></param>
+            <param name="easySession"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Query.ObjectQuery.UpdateSP(System.String,EasyData.EasySession)">
+            <summary>
+            
+            </summary>
+            <param name="spname"></param>
+            <param name="easySession"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.DB.Oracle.OracleDBTypes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.DB.Oracle.OracleDBTypes.GetDbType(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="DataType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.Attributes.KeyPropertyAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EasyData.Attributes.PropertyAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.PropertyAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.PropertyAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.PropertyAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.PropertyAttribute"/> class.
+            </summary>
+            <param name="column">The column.</param>
+        </member>
+        <member name="M:EasyData.Attributes.PropertyAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.PropertyAttribute"/> class.
+            </summary>
+            <param name="column">The column.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.NotNull">
+            <summary>
+            Gets or sets a value indicating whether this property allow null.
+            </summary>
+            <value><c>true</c> if allow null; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.Length">
+            <summary>
+            Gets or sets the length of the property (for strings - nvarchar(50) )
+            </summary>
+            <value>The length.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.Column">
+            <summary>
+            Gets or sets the column name
+            </summary>
+            <value>The column.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.Update">
+            <summary>
+            Set to <c>false</c> to ignore this property when updating entities of this EasyData class.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.Insert">
+            <summary>
+            Set to <c>false</c> to ignore this property when inserting entities of this EasyData class.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.Unique">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:EasyData.Attributes.PropertyAttribute"/> is unique.
+            </summary>
+            <value><c>true</c> if unique; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.UniqueKey">
+            <summary>
+            A unique-key attribute can be used to group columns 
+            in a single unit key constraint. 
+            </summary>
+            <value>unique key name</value>
+            <remarks>
+            Currently, the 
+            specified value of the unique-key attribute is not 
+            used to name the constraint, only to group the columns 
+            in the mapping file.
+            </remarks>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.ColumnType">
+            <summary>
+            Gets or sets the type of the column.
+            </summary>
+            <value>The type of the column.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.Index">
+            <summary>
+            specifies the name of a (multi-column) index
+            </summary>
+            <value>index name</value>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.Check">
+            <summary>
+            From NHibernate documentation:
+            create an SQL check constraint on either column or table
+            </summary>
+            <value>Sql Expression</value>
+        </member>
+        <member name="P:EasyData.Attributes.PropertyAttribute.PartialLoad">
+            <summary>
+            Gets or sets the loading type.
+            </summary>
+            <value>The loading type.</value>
+        </member>
+        <member name="P:EasyData.Attributes.KeyPropertyAttribute.UnsavedValue">
+            <summary>
+            Gets or sets the unsaved value.
+            </summary>
+            <value>The unsaved value.</value>
+        </member>
+        <member name="T:EasyData.DB.MySql.MySqlDBTypes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.DB.MySql.MySqlDBTypes.GetDbType(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="DataType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetParameter(System.String,System.Object,System.Type)">
+            <summary>
+            Bind a value to a named query parameter
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">The possibly null parameter value</param>
+            <param name="type">The NHibernate <see cref="!:IType"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetParameter``1(System.String,``0)">
+            <summary>
+            Bind a value to a named query parameter
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">The possibly null parameter value</param>
+            <typeparam name="T">The parameter's <see cref="T:System.Type"/> </typeparam>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetParameterList(System.String,System.Collections.ICollection,System.Type)">
+            <summary>
+            Bind multiple values to a named query parameter. This is useful for binding a list
+            of values to an expression such as <c>foo.bar in (:value_list)</c>
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="vals">A collection of values to list</param>
+            <param name="type">The Hibernate type of the values</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetParameterList(System.String,System.Object[],System.Type)">
+            <summary> 
+            Bind multiple values to a named query parameter. This is useful for binding
+            a list of values to an expression such as <tt>foo.bar in (:value_list)</tt>.
+            </summary>
+            <param name="name">the name of the parameter </param>
+            <param name="vals">a collection of values to list </param>
+            <param name="type">the Hibernate type of the values </param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetBinary(System.String,System.Byte[])">
+            <summary>
+            Bind an instance of a <see cref="T:System.Byte"/> array to a named parameter
+            using an NHibernate <see cref="!:BinaryType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.Byte"/> array.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetBoolean(System.String,System.Boolean)">
+            <summary>
+            Bind an instance of a <see cref="T:System.Boolean"/> to a named parameter
+            using an NHibernate <see cref="!:BooleanType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.Boolean"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetByte(System.String,System.Byte)">
+            <summary>
+            Bind an instance of a <see cref="T:System.Byte"/> to a named parameter
+            using an NHibernate <see cref="!:ByteType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.Byte"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetCharacter(System.String,System.Char)">
+            <summary>
+            Bind an instance of a <see cref="T:System.Char"/> to a named parameter
+            using an NHibernate <see cref="!:CharType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.Char"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetDateTime(System.String,System.DateTime)">
+            <summary>
+            Bind an instance of a <see cref="T:System.DateTime"/> to a named parameter
+            using an NHibernate <see cref="!:DateTimeType"/>.
+            </summary>
+            <param name="val">A non-null instance of a <see cref="T:System.DateTime"/>.</param>
+            <param name="name">The name of the parameter</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetDecimal(System.String,System.Decimal)">
+            <summary>
+            Bind an instance of a <see cref="T:System.Decimal"/> to a named parameter
+            using an NHibernate <see cref="!:DecimalType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.Decimal"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetDouble(System.String,System.Double)">
+            <summary>
+            Bind an instance of a <see cref="T:System.Double"/> to a named parameter
+            using an NHibernate <see cref="!:DoubleType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.Double"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetEnum(System.String,System.Enum)">
+            <summary>
+            Bind an instance of a persistent enumeration class to a named parameter
+            using an NHibernate <see cref="!:PersistentEnumType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a persistent enumeration</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetInt16(System.String,System.Int16)">
+            <summary>
+            Bind an instance of a <see cref="T:System.Int16"/> to a named parameter
+            using an NHibernate <see cref="!:Int16Type"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.Int16"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetInt32(System.String,System.Int32)">
+            <summary>
+            Bind an instance of a <see cref="T:System.Int32"/> to a named parameter
+            using an NHibernate <see cref="!:Int32Type"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.Int32"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetInt64(System.String,System.Int64)">
+            <summary>
+            Bind an instance of a <see cref="T:System.Int64"/> to a named parameter
+            using an NHibernate <see cref="!:Int64Type"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.Int64"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetString(System.String,System.String)">
+            <summary>
+            Bind an instance of a <see cref="T:System.String"/> to a named parameter
+            using an NHibernate <see cref="!:StringType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.String"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetTime(System.String,System.DateTime)">
+            <summary>
+            Bind an instance of a <see cref="T:System.DateTime"/> to a named parameter
+            using an NHibernate <see cref="!:DateTimeType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.DateTime"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetTimestamp(System.String,System.DateTime)">
+            <summary>
+            Bind an instance of a <see cref="T:System.DateTime"/> to a named parameter
+            using an NHibernate <see cref="!:TimestampType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">A non-null instance of a <see cref="T:System.DateTime"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.IQuery.SetGuid(System.String,System.Guid)">
+            <summary>
+            Bind an instance of a <see cref="T:System.Guid"/> to a named parameter
+            using an NHibernate <see cref="!:GuidType"/>.
+            </summary>
+            <param name="name">The name of the parameter</param>
+            <param name="val">An instance of a <see cref="T:System.Guid"/>.</param>
+        </member>
+        <member name="M:EasyData.Query.QueryImpl.#ctor(System.String,EasyData.EasySession,System.Data.CommandType)">
+            <summary>
+            
+            </summary>
+            <param name="query"></param>
+            <param name="session"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:EasyData.Query.QueryImpl.Execute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.Query.QueryImpl.ProcessQuery(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.EasySave`1">
+            <summary>
+            Provide the create functionality for the EasyData
+            </summary>
+            <typeparam name="T">Type of the entity class</typeparam>
+        </member>
+        <member name="M:EasyData.EasySave`1.Save(`0,EasyData.EasySession)">
+            <summary>
+            Saves the specified instance.
+            </summary>
+            <param name="instance">Type T instance to extract the added values</param>
+            <param name="easySession">Session variable which contains connection and transaction data</param>
+            <returns>Return T type instance updated with the primery key</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.SQLSave(`0,EasyData.EasySession)">
+            <summary>
+            Save function when the DBType is SQL or not defined
+            </summary>
+            <param name="instance">Type T instance to extract the added values</param>
+            <param name="easySession">Session variable which contains connection and transaction data</param>
+            <returns>Return T type instance updated with the primery key</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.OracleSave(`0,EasyData.EasySession)">
+            <summary>
+            Save function when the DBType is ORACLE
+            </summary>
+            <param name="instance">Type T instance to extract the added values</param>
+            <param name="easySession">Session variable which contains connection and transaction data</param>
+            <returns>Return T type instance updated with the primery key</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.MySqlSave(`0,EasyData.EasySession)">
+            <summary>
+            Save function when the DBType is MYSQL
+            </summary>
+            <param name="instance">Type T instance to extract the added values</param>
+            <param name="easySession">Session variable which contains connection and transaction data</param>
+            <returns>Return T type instance updated with the primery key</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.GetInstanceWithId(`0,System.Object)">
+            <summary>
+            Update the instance with the primery key value
+            </summary>
+            <param name="instance">Type T instance to add the key value</param>
+            <param name="id">Key value</param>
+            <returns>Return T type instance with Id</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.InsertAssociationQueryBuilder(`0,EasyData.Attributes.HasAndBelongsToManyAttribute,System.String,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction,System.Int32)">
+            <summary>
+            To build the insert query and command to insert keys to the association table in ManyToMany situation
+            </summary>
+            <param name="instance">Type T instance to capture the values to insert</param>
+            <param name="hasAndBelongsToManyAttr">ManyToMany attribute details</param>
+            <param name="query">String variables which contains the query</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <param name="listCount">Interger value which contains the count of the collection</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.OracleInsertAssociationQueryBuilder(`0,EasyData.Attributes.HasAndBelongsToManyAttribute,System.String,System.Data.OracleClient.OracleConnection,System.Data.OracleClient.OracleTransaction,System.Int32)">
+            <summary>
+            To build the insert query and command to insert keys to the association table in ManyToMany situation
+            </summary>
+            <param name="instance">Type T instance to capture the values to insert</param>
+            <param name="hasAndBelongsToManyAttr">ManyToMany attribute details</param>
+            <param name="query">String variables which contains the query</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <param name="listCount">Interger value which contains the count of the collection</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.MySqlInsertAssociationQueryBuilder(`0,EasyData.Attributes.HasAndBelongsToManyAttribute,System.String,Devart.Data.MySql.MySqlConnection,Devart.Data.MySql.MySqlTransaction,System.Int32)">
+            <summary>
+            To build the insert query and command to insert keys to the association table in ManyToMany situation
+            </summary>
+            <param name="instance">Type T instance to capture the values to insert</param>
+            <param name="hasAndBelongsToManyAttr">ManyToMany attribute details</param>
+            <param name="query">String variables which contains the query</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <param name="listCount">Interger value which contains the count of the collection</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.CheckDoubleEntry(System.String,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            To check existing entries of the key table before add new
+            </summary>
+            <param name="query">Select query to check existing records</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <returns>Return a bool value by giving permission for the insert</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.OracleCheckDoubleEntry(System.String,System.Data.OracleClient.OracleConnection,System.Data.OracleClient.OracleTransaction)">
+            <summary>
+            To check existing entries of the key table before add new
+            </summary>
+            <param name="query">Select query to check existing records</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <returns>Return a bool value by giving permission for the insert</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.MySqlCheckDoubleEntry(System.String,Devart.Data.MySql.MySqlConnection,Devart.Data.MySql.MySqlTransaction)">
+            <summary>
+            To check existing entries of the key table before add new
+            </summary>
+            <param name="query">Select query to check existing records</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <returns>Return a bool value by giving permission for the insert</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.GetCurrentIdQueryBuilder(`0,System.String,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            Build the query to capture the newly created primery key value and arrange parameters
+            </summary>
+            <param name="instance">Type T instance to capture the table name</param>
+            <param name="query">String variables which contains the query</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.InsertQueryBuilder(`0,System.String,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction)">
+            <summary>
+            Build the query to insert data and arrange parameters
+            </summary>
+            <param name="instance">Type T instance to capture the values to insert</param>
+            <param name="query">String variables which contains the query</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.OracleInsertQueryBuilder(`0,System.String,System.Data.OracleClient.OracleConnection,System.Data.OracleClient.OracleTransaction)">
+            <summary>
+            Build the query to insert data and arrange parameters
+            </summary>
+            <param name="instance">Type T instance to capture the table name</param>
+            <param name="query">String variables which contains the query</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="M:EasyData.EasySave`1.MySqlInsertQueryBuilder(`0,System.String,Devart.Data.MySql.MySqlConnection,Devart.Data.MySql.MySqlTransaction)">
+            <summary>
+            Build the query to insert data and arrange parameters
+            </summary>
+            <param name="instance">Type T instance to capture the table name</param>
+            <param name="query">String variables which contains the query</param>
+            <param name="connection">SqlConnection variable to connect the DB</param>
+            <param name="transaction">SqlTransation variable to handle the transaction</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="T:EasyData.Attributes.HasAndBelongsToManyAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.HasAndBelongsToManyAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.HasAndBelongsToManyAttribute"/> class.
+            </summary>
+            <param name="mapType">Type of the map.</param>
+        </member>
+        <member name="M:EasyData.Attributes.HasAndBelongsToManyAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.HasAndBelongsToManyAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.HasAndBelongsToManyAttribute.#ctor(System.Type,EasyData.Attributes.RelationType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.HasAndBelongsToManyAttribute"/> class.
+            </summary>
+            <param name="mapType">Type of the map.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:EasyData.Attributes.HasAndBelongsToManyAttribute.ColumnRef">
+            <summary>
+            Gets or sets the column that represent the other side on the assoication table
+            </summary>
+            <value>The column ref.</value>
+        </member>
+        <member name="P:EasyData.Attributes.HasAndBelongsToManyAttribute.CompositeKeyColumnRefs">
+            <summary>
+            Gets or sets the composite key columns that represent the other side on the assoication table
+            </summary>
+            <value>The composite key column refs.</value>
+        </member>
+        <member name="P:EasyData.Attributes.HasAndBelongsToManyAttribute.ColumnKey">
+            <summary>
+            Gets or sets the key column name
+            </summary>
+            <value>The column key.</value>
+        </member>
+        <member name="P:EasyData.Attributes.HasAndBelongsToManyAttribute.CompositeKeyColumnKeys">
+            <summary>
+            Gets or sets the composite key columns names.
+            </summary>
+            <value>The composite key column keys.</value>
+        </member>
+        <member name="P:EasyData.Attributes.HasAndBelongsToManyAttribute.Fetch">
+            <summary>
+            Chooses between outer-join fetching
+            or sequential select fetching.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.HasAndBelongsToManyAttribute.CollectionType">
+            <summary>
+            Provides a custom collection type.
+            </summary>
+        </member>
+        <member name="T:EasyData.EasyDelete`1">
+            <summary>
+            Provide the delete functionality for the EasyData
+            </summary>
+            <typeparam name="T">Type of the entity class</typeparam>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.DeleteAll(System.Type,System.String,EasyData.EasySession)">
+            <summary>
+            Deletes all.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="where">The where.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.Delete(`0,EasyData.EasySession)">
+            <summary>
+            Deletes the specified instance.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.SQLDelete(System.Type,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            SQL delete all.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="where">The where.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>
+            If success return <c>true</c>, else <c>false</c>
+            </returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.OracleDelete(System.Type,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            Oracle delete all.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="where">The where.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.MySqlDelete(System.Type,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            MySql delete all.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="where">The where.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.SQLDelete(`0,EasyData.EasySession)">
+            <summary>
+            SQL delete.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.OracleDelete(`0,EasyData.EasySession)">
+            <summary>
+            Oracle delete.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.MySqlDelete(`0,EasyData.EasySession)">
+            <summary>
+            MySql delete.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.SqlQueryBuilderForDelete(System.Type,System.String,System.Object,System.String,System.String,EasyData.EasySession)">
+            <summary>
+            SQL delete query builder .
+            <remarks>TO DO: Cascade Delete</remarks>
+            </summary>
+            <param name="type">The type.</param>
+            <param name="where">The where.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Returns the SqlCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.OracleQueryBuilderForDelete(System.Type,System.String,System.Object,System.String,System.String,EasyData.EasySession)">
+            <summary>
+            Oracle delete query builder .
+            <remarks>TO DO: Cascade Delete</remarks>
+            </summary>
+            <param name="type">The type.</param>
+            <param name="where">The where.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Returns the OracleCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.MySqlQueryBuilderForDelete(System.Type,System.String,System.Object,System.String,System.String,EasyData.EasySession)">
+            <summary>
+            MySQL delete query builder .
+            <remarks>TO DO: Cascade Delete</remarks>
+            </summary>
+            <param name="type">The type.</param>
+            <param name="where">The where.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Returns the MySqlCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.SqlQueryBuilderForDelete(`0,System.String,EasyData.EasySession)">
+            <summary>
+            SQL delete query builder.
+            <remarks>TO DO: Cascade Delete</remarks>
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Returns the SqlCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.OracleQueryBuilderForDelete(`0,System.String,EasyData.EasySession)">
+            <summary>
+            SQL delete query builder.
+            <remarks>TO DO: Cascade Delete</remarks>
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Returns the OracleCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.MySqlQueryBuilderForDelete(`0,System.String,EasyData.EasySession)">
+            <summary>
+            MySQL delete query builder.
+            <remarks>TO DO: Cascade Delete</remarks>
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Returns the MySqlCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.SetPropertyValue(`0,System.String)">
+            <summary>
+            Sets the property value.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.GetPropertyColumn(System.Type,System.String)">
+            <summary>
+            Gets the property column.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.SetPrimaryKeyValue(`0)">
+            <summary>
+            Sets the primary key value.
+            </summary>
+            <param name="instance">The instance.</param>
+        </member>
+        <member name="M:EasyData.EasyDelete`1.GetPrimaryKeyColumn(System.Type)">
+            <summary>
+            Gets the primary key column.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="T:EasyData.DB.Sql.SqlParameters">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.DB.Sql.SqlParameters.CreateInputParameter(System.String,System.Data.SqlDbType,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.Sql.SqlParameters.CreateOutputParameter(System.String,System.Data.SqlDbType)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.Sql.SqlParameters.CreateOutputParameter(System.String,System.Data.SqlDbType,System.Data.ParameterDirection)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <param name="Direction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.Sql.SqlParameters.CreateInputParameter(System.String,System.Data.SqlDbType,System.Object,System.Data.ParameterDirection)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <param name="Value"></param>
+            <param name="Direction"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.Attributes.EasyDataAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.EasyDataAttribute.#ctor">
+            <summary>
+            Uses the class name as table name
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.EasyDataAttribute.#ctor(System.String)">
+            <summary>
+            Associates the specified table with the target type
+            </summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:EasyData.Attributes.EasyDataAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Associates the specified table and schema with the target type
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.EasyDataAttribute.Table">
+            <summary>
+            Gets or sets the table name associated with the type
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.EasyDataAttribute.Schema">
+            <summary>
+            Gets or sets the schema name associated with the type
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.EasyDataAttribute.DiscriminatorColumn">
+            <summary>
+            Gets or sets the Discriminator column for
+            a table inheritance modeling
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.EasyDataAttribute.DiscriminatorType">
+            <summary>
+            Gets or sets the column type (like string or integer)
+            for the discriminator column
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.EasyDataAttribute.DiscriminatorValue">
+            <summary>
+            Gets or sets the value that represents the
+            target class on the discriminator column
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.EasyDataAttribute.Where">
+            <summary>
+            SQL condition to retrieve objects
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.EasyDataAttribute.DynamicUpdate">
+            <summary>
+            Specifies that UPDATE SQL should be 
+            generated at runtime and contain only 
+            those columns whose values have changed.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.EasyDataAttribute.DynamicInsert">
+            <summary>
+            Specifies that INSERT SQL should be 
+            generated at runtime and contain only 
+            the columns whose values are not null.
+            </summary>
+        </member>
+        <member name="T:EasyData.EasySelect`1">
+            <summary>
+            Provide the read functionality for the EasyData
+            </summary>
+            <typeparam name="T">Type of the entity class</typeparam>
+        </member>
+        <member name="M:EasyData.EasySelect`1.FindAll(System.Type,System.String,EasyData.EasySession,EasyData.EasyLoad)">
+            <summary>
+            Finds the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.Find(System.Type,System.Object,EasyData.EasySession,EasyData.EasyLoad)">
+            <summary>
+            Finds the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="id">The id.</param>
+            <param name="easySession">The easy session.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.Find(`0,EasyData.EasySession,EasyData.EasyLoad)">
+            <summary>
+            Finds the specified instance.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="easySession">The easy session.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.FindByProperty(`0,System.String,EasyData.EasySession,EasyData.EasyLoad)">
+            <summary>
+            Finds the by property.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="property">The property.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.FindByProperty(System.Type,System.String,System.Object,EasyData.EasySession,EasyData.EasyLoad)">
+            <summary>
+            Finds the by property.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.Count(System.Type,EasyData.EasySession)">
+            <summary>
+            Counts the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.Count(System.Type,System.String,EasyData.EasySession)">
+            <summary>
+            Counts the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="where">The where.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.CountByProperty(System.Type,System.String,System.Object,EasyData.EasySession)">
+            <summary>
+            Counts the by property.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.CountByProperty(`0,System.String,EasyData.EasySession)">
+            <summary>
+            Counts the by property.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="property">The property.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.Exists(System.Type,EasyData.EasySession)">
+            <summary>
+            Existses the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.Exists(System.Type,System.String,EasyData.EasySession)">
+            <summary>
+            Existses the specified type.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="where">The where.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.ExistsByProperty(System.Type,System.String,System.Object,EasyData.EasySession)">
+            <summary>
+            Existses the by property.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.ExistsByProperty(`0,System.String,EasyData.EasySession)">
+            <summary>
+            Existses the by property.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="property">The property.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.SqlExists(System.Type,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            SQLs the exists.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="where">The where.</param>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.OracleExists(System.Type,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            SQLs the exists.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.MySqlExists(System.Type,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            SQLs the exists.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.SqlCount(System.Type,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            SQLs the count.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.OracleCount(System.Type,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            SQLs the count.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.MySqlCount(System.Type,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            SQLs the count.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.CountQueryBuilder(System.Type,System.String,System.Object,System.String,System.String,EasyData.EasySession)">
+            <summary>
+            Counts the query builder.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.OracleCountQueryBuilder(System.Type,System.String,System.Object,System.String,System.String,EasyData.EasySession)">
+            <summary>
+            Counts the query builder.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.MySqlCountQueryBuilder(System.Type,System.String,System.Object,System.String,System.String,EasyData.EasySession)">
+            <summary>
+            Counts the query builder.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="value">The value.</param>
+            <param name="property">The property.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.SqlFindProperty(System.Type,System.String,System.Object,EasyData.EasySession)">
+            <summary>
+            SQLs the find property.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.OracleFindProperty(System.Type,System.String,System.Object,EasyData.EasySession)">
+            <summary>
+            SQLs the find property.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.MySqlFindProperty(System.Type,System.String,System.Object,EasyData.EasySession)">
+            <summary>
+            SQLs the find property.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.SqlFind(System.Type,System.Object,EasyData.EasySession)">
+            <summary>
+            SQLs the find.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="id">The id.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.OracleFind(System.Type,System.Object,EasyData.EasySession)">
+            <summary>
+            SQLs the find.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="id">The id.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.MySqlFind(System.Type,System.Object,EasyData.EasySession)">
+            <summary>
+            SQLs the find.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="id">The id.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.SqlFindAll(System.Type,System.String,EasyData.EasySession)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.OracleFindAll(System.Type,System.String,EasyData.EasySession)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.MySqlFindAll(System.Type,System.String,EasyData.EasySession)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.CreateInstance(System.Data.SqlClient.SqlDataReader,System.Type)">
+            <summary>
+            Creates the result instance.
+            </summary>
+            <param name="resultDataReader">The result data reader.</param>
+            <param name="type">The type.</param>
+            <returns>T type instance</returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.OracleCreateInstance(System.Data.OracleClient.OracleDataReader,System.Type)">
+            <summary>
+            Creates the result instance.
+            </summary>
+            <param name="resultDataReader">The result data reader.</param>
+            <param name="type">The type.</param>
+            <returns>T type instance</returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.MySqlCreateInstance(Devart.Data.MySql.MySqlDataReader,System.Type)">
+            <summary>
+            Creates the result instance.
+            </summary>
+            <param name="resultDataReader">The result data reader.</param>
+            <param name="type">The type.</param>
+            <returns>T type instance</returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.SelectQueryBuilder(System.Type,System.String,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            Build the select query.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.OracleSelectQueryBuilder(System.Type,System.String,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            Build the select query.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.MySqlSelectQueryBuilder(System.Type,System.String,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            Build the select query.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Return the SqlCommand to execute</returns>
+        </member>
+        <member name="M:EasyData.EasySelect`1.SetPropertyValue(`0,System.String)">
+            <summary>
+            Sets the property value.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:EasyData.EasySelect`1.GetPropertyColumn(System.Type,System.String)">
+            <summary>
+            Gets the property column.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:EasyData.EasySelect`1.SetPrimaryKeyValue(`0)">
+            <summary>
+            Sets the primary key value.
+            </summary>
+            <param name="instance">The instance.</param>
+        </member>
+        <member name="M:EasyData.EasySelect`1.GetPrimaryKeyColumn(System.Type)">
+            <summary>
+            Gets the primary key column.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="T:EasyData.EasyLoad">
+            <summary>
+            Nature of the data load
+            </summary>
+        </member>
+        <member name="F:EasyData.EasyLoad.None">
+            <summary>
+            Default, Loads all data for the current object and for the related objects
+            </summary>
+        </member>
+        <member name="F:EasyData.EasyLoad.Simple">
+            <summary>
+            Loads data for the current object, without considering related objects.
+            </summary>
+        </member>
+        <member name="F:EasyData.EasyLoad.Specified">
+            <summary>
+            Loads data for the specified properties of the current or related objects.
+            </summary>
+        </member>
+        <member name="T:EasyData.EasyUpdate">
+            <summary>
+            Nature of the data load
+            </summary>
+        </member>
+        <member name="F:EasyData.EasyUpdate.True">
+            <summary>
+            Update the data only for the current object.
+            </summary>
+        </member>
+        <member name="F:EasyData.EasyUpdate.False">
+            <summary>
+            Default value, update associate object data according
+            to the relationship to the current object.
+            </summary>
+        </member>
+        <member name="T:EasyData.FlushAction">
+            <summary>
+            Behavior of the session
+            </summary>
+        </member>
+        <member name="F:EasyData.FlushAction.Auto">
+            <summary>
+            Original behavior. Changes are persisted at the 
+            end or before some queries.
+            </summary>
+        </member>
+        <member name="F:EasyData.FlushAction.Never">
+            <summary>
+            Flush need to be controlled manually. Best choice
+            for readonly operations
+            </summary>
+        </member>
+        <member name="T:EasyData.EasySession">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.EasySession.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.EasySession.#ctor(EasyData.FlushAction)">
+            <summary>
+            
+            </summary>
+            <param name="flushAction"></param>
+        </member>
+        <member name="M:EasyData.EasySession.Dispose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.EasySession.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:EasyData.EasySession.Finalize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.EasySession.Connection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.EasySession.Transaction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.EasySession.OConnection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.EasySession.OTransaction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.EasySession.MConnection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.EasySession.MTransaction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.EasySession.SetCommit">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.EasySession.SetRollback">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.EasySession.FlushAction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EasyData.Attributes.PrimaryKeyType">
+            <summary>
+            Define the possible strategies to set the Primary Key values
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.PrimaryKeyType.Identity">
+            <summary>
+            Use Identity column (auto number)
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.PrimaryKeyType.Sequence">
+            <summary>
+            Use a sequence
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.PrimaryKeyType.Guid">
+            <summary>
+            Generate a Guid for the primary key
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.PrimaryKeyType.Native">
+            <summary>
+            Use an identity or sequence if supported by the database
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.PrimaryKeyType.Assigned">
+            <summary>
+            The primary key value is always assigned
+            Note: using this you will lose the ability to call Save(), and will need to call Create() or Update()
+            explicitly.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.PrimaryKeyType.Foreign">
+            <summary>
+            This is a foreign key to another table
+            </summary>
+        </member>
+        <member name="T:EasyData.Attributes.NotFoundBehaviour">
+            <summary>
+            Define how broken relations should be handled.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.NotFoundBehaviour.Default">
+            <summary>
+            Throw an exception when the relation is broken.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.NotFoundBehaviour.Exception">
+            <summary>
+            Throw an exception when the relation is broken.
+            </summary>
+            <remarks>this is the default behaviour</remarks>
+        </member>
+        <member name="F:EasyData.Attributes.NotFoundBehaviour.Ignore">
+            <summary>
+            Ignore the broken relation and update
+            the FK to null on the next save.
+            </summary>
+        </member>
+        <member name="T:EasyData.Attributes.FetchEnum">
+            <summary>
+            Define the possible fetch option values
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.FetchEnum.Unspecified">
+            <summary>
+            Let EasyData decide what to do here
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.FetchEnum.Join">
+            <summary>
+            Use a JOIN to load the data
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.FetchEnum.Select">
+            <summary>
+            Use a seperate SELECT statement to load the data
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.FetchEnum.SubSelect">
+            <summary>
+            Use a seperate SELECT statement to load the data, re-running the original query in a subselect
+            </summary>
+        </member>
+        <member name="T:EasyData.Attributes.CascadeEnum">
+            <summary>
+            Defines the cascading behaviour of this association.
+            </summary>
+            <remarks>
+            Entities has associations to other objects, this may be an association to a single item (<see cref="T:EasyData.Attributes.BelongsToAttribute"/>)
+            or an association to a collection (<see cref="T:EasyData.Attributes.HasManyAttribute"/>, <see cref="!:HasManyToAnyAttribute"/>).
+            At any rate, you are able to tell EasyData to automatically traverse an entity's associations, and act according 
+            to the cascade option. For instance, adding an unsaved entity to a collection with <see cref="F:EasyData.Attributes.CascadeEnum.SaveUpdate"/>
+            cascade will cause it to be saved along with its parent object, without any need for explicit instructions on our side.
+            </remarks>
+        </member>
+        <member name="F:EasyData.Attributes.CascadeEnum.None">
+            <summary>
+            No cascading. This is the default.
+            The cascade should be handled manually.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.CascadeEnum.All">
+            <summary>
+            Cascade save, update and delete.
+            When the object is saved, updated or deleted, the associations will be checked
+            and the objects found will also be saved, updated or deleted.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.CascadeEnum.SaveUpdate">
+            <summary>
+            Cascade save and update.
+            When the object is saved or updated, the associations will be checked and any object that requires
+            will be saved or updated (including saving or updating the associations in many-to-many scenario).
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.CascadeEnum.Delete">
+            <summary>
+            Cascade delete.
+            When the object is deleted, all the objects in the association will be deleted as well.
+            </summary>
+        </member>
+        <member name="T:EasyData.Attributes.RelationType">
+            <summary>
+            Define the relation type for a relation.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.RelationType.Guess">
+            <summary>
+            Let Active Record guess what is the type of the relation.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.RelationType.Bag">
+            <summary>
+            An bag of items (allow duplicates)
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.RelationType.Set">
+            <summary>
+            A set of unique items
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.RelationType.IdBag">
+            <summary>
+            A bag of items with id
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.RelationType.Map">
+            <summary>
+            Map of key/value pairs (IDictionary)
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.RelationType.List">
+            <summary>
+            A list of items - position in the list has meaning
+            </summary>
+        </member>
+        <member name="T:EasyData.Attributes.ManyRelationCascadeEnum">
+            <summary>
+            Defines the cascading behaviour of this association.
+            </summary>
+            <remarks>
+            Entities has associations to other objects, this may be an association to a single item (<see cref="T:EasyData.Attributes.BelongsToAttribute"/>)
+            or an association to a collection (<see cref="T:EasyData.Attributes.HasManyAttribute"/>, <see cref="!:HasManyToAnyAttribute"/>).
+            At any rate, you are able to tell EasyData to automatically traverse an entity's associations, and act according 
+            to the cascade option. For instance, adding an unsaved entity to a collection with <see cref="F:EasyData.Attributes.CascadeEnum.SaveUpdate"/>
+            cascade will cause it to be saved along with its parent object, without any need for explicit instructions on our side.
+            </remarks>
+        </member>
+        <member name="F:EasyData.Attributes.ManyRelationCascadeEnum.None">
+            <summary>
+            No cascading. This is the default.
+            The cascade should be handled manually.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.ManyRelationCascadeEnum.All">
+            <summary>
+            Cascade save, update and delete.
+            When the object is saved, updated or deleted, the associations will be checked
+            and the objects found will also be saved, updated or deleted.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.ManyRelationCascadeEnum.SaveUpdate">
+            <summary>
+            Cascade save and update.
+            When the object is saved or updated, the associations will be checked and any object that requires
+            will be saved or updated (including saving or updating the associations in many-to-many scenario).
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.ManyRelationCascadeEnum.Delete">
+            <summary>
+            Cascade delete.
+            When the object is deleted, all the objects in the association will be deleted as well.
+            </summary>
+        </member>
+        <member name="F:EasyData.Attributes.ManyRelationCascadeEnum.AllDeleteOrphan">
+            <summary>
+            Cascade save, update and delete, removing orphan children.
+            When an object is saved, updated or deleted, the associations will be checked and all objects found
+            will be saved, updated or deleted as well.
+            In additional to that, when an object is removed from the association and not associated with another object (orphaned), it will also be deleted.
+            </summary>
+        </member>
+        <member name="T:EasyData.Core.CheckSQLDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.Core.CheckSQLDate.CheckDefaultDate(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.Attributes.NestedAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.NestedAttribute.#ctor">
+            <summary>
+            Informs ActiveRecord that the marked property contains nested elements, contained
+            in a separate, reusable class.
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.NestedAttribute.#ctor(System.String)">
+            <summary>
+            Informs ActiveRecord that the marked property contains nested elements, contained
+            in a separate, reusable class.
+            </summary>
+            <param name="columnPrefix">A prefix to insert before each column in the nested component</param>
+        </member>
+        <member name="P:EasyData.Attributes.NestedAttribute.MapType">
+            <summary>
+            Allows one to reference a different type
+            than the property type
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.NestedAttribute.Update">
+            <summary>
+            Set to <c>false</c> to ignore this nested component when updating entities of this ActiveRecord class.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.NestedAttribute.Insert">
+            <summary>
+            Set to <c>false</c> to ignore this nested component when inserting entities of this ActiveRecord class.
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.NestedAttribute.ColumnPrefix">
+            <summary>
+            A prefix to insert before each column in the nested component.
+            </summary>
+        </member>
+        <member name="T:EasyData.Core.CheckGuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.Core.CheckGuid.CheckDefaultGuid(System.Object)">
+            <summary>
+            Checks the default GUID.
+            </summary>
+            <param name="guid">The GUID.</param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.Attributes.PrimaryKeyAttribute">
+            <summary>
+            Custom attribute for the primary key relationship
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.PrimaryKeyAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.PrimaryKeyAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:EasyData.Attributes.PrimaryKeyAttribute.#ctor(EasyData.Attributes.PrimaryKeyType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.PrimaryKeyAttribute"/> class.
+            </summary>
+            <param name="generator">The generator.</param>
+        </member>
+        <member name="M:EasyData.Attributes.PrimaryKeyAttribute.#ctor(EasyData.Attributes.PrimaryKeyType,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.PrimaryKeyAttribute"/> class.
+            </summary>
+            <param name="generator">The generator.</param>
+            <param name="column">The PK column.</param>
+        </member>
+        <member name="M:EasyData.Attributes.PrimaryKeyAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EasyData.Attributes.PrimaryKeyAttribute"/> class.
+            </summary>
+            <param name="column">The PK column.</param>
+        </member>
+        <member name="P:EasyData.Attributes.PrimaryKeyAttribute.Generator">
+            <summary>
+            Gets or sets the generator.
+            </summary>
+            <value>The generator.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PrimaryKeyAttribute.Column">
+            <summary>
+            Gets or sets the column name
+            </summary>
+            <value>The column.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PrimaryKeyAttribute.UnsavedValue">
+            <summary>
+            Gets or sets the unsaved value.
+            </summary>
+            <value>The unsaved value.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PrimaryKeyAttribute.SequenceName">
+            <summary>
+            Gets or sets the name of the sequence.
+            </summary>
+            <value>The name of the sequence.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PrimaryKeyAttribute.ColumnType">
+            <summary>
+            Gets or sets the type of the column.
+            </summary>
+            <value>The type of the column.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PrimaryKeyAttribute.Length">
+            <summary>
+            Gets or sets the length of values in the column
+            </summary>
+            <value>The length.</value>
+        </member>
+        <member name="P:EasyData.Attributes.PrimaryKeyAttribute.Params">
+            <summary>
+            Comma separated value of parameters to the generator
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.PrimaryKeyAttribute.PartialLoad">
+            <summary>
+            Gets or sets the loading type.
+            </summary>
+            <value>The loading type.</value>
+        </member>
+        <member name="T:EasyData.Attributes.CompositeKeyAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:EasyData.Attributes.CompositeKeyAttribute.UnsavedValue">
+            <summary>
+            Gets or sets the unsaved value.
+            </summary>
+            <value>The unsaved value.</value>
+        </member>
+        <member name="T:EasyData.EasyUpdate`1">
+            <summary>
+            Provide the update functionality for the EasyData
+            </summary>
+            <typeparam name="T">Type of the entity class</typeparam>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.Update(`0,EasyData.EasySession,EasyData.EasyUpdate)">
+            <summary>
+            Updates the specified instance.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.SQLUpdate(`0,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            SQL update.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.OracleUpdate(`0,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            Oracle update.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.MySqlUpdate(`0,System.String,System.Object,System.String,EasyData.EasySession)">
+            <summary>
+            MySql update.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If success return <c>true</c>, else <c>false</c></returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.DeleteAllAssociationRecordsSql(`0,System.String,EasyData.EasySession)">
+            <summary>
+            Deletes all association records SQL.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.DeleteAllAssociationRecordsOracle(`0,System.String,EasyData.EasySession)">
+            <summary>
+            Deletes all association records Oracle.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.DeleteAllAssociationRecordsMySql(`0,System.String,EasyData.EasySession)">
+            <summary>
+            Deletes all association records MySql.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.SqlQueryBuilderForUpdateAssociation(`0,System.String,EasyData.EasySession,System.Int32)">
+            <summary>
+            Sql query builder for update association.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <param name="listCount">The related record count.</param>
+            <returns>Returns the SqlCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.OracleQueryBuilderForUpdateAssociation(`0,System.String,EasyData.EasySession,System.Int32)">
+            <summary>
+            Oracle query builder for update association.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <param name="listCount">The related record count.</param>
+            <returns>Returns the OracleCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.MySqlQueryBuilderForUpdateAssociation(`0,System.String,EasyData.EasySession,System.Int32)">
+            <summary>
+            MySql query builder for update association.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <param name="listCount">The related record count.</param>
+            <returns>Returns the MySqlCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.CheckDoubleEntrySql(System.String,EasyData.EasySession)">
+            <summary>
+            Checks the double entry. (SQL)
+            </summary>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If exists return <c>false</c>, else <c>true</c></returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.CheckDoubleEntryOracle(System.String,EasyData.EasySession)">
+            <summary>
+            Checks the double entry. (Oracle)
+            </summary>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If exists return <c>false</c>, else <c>true</c></returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.CheckDoubleEntryMySql(System.String,EasyData.EasySession)">
+            <summary>
+            Checks the double entry. (MySql)
+            </summary>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>If exists return <c>false</c>, else <c>true</c></returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.SQLQueryBuilderForUpdate(`0,System.String,System.Object,System.String,System.String,EasyData.EasySession)">
+            <summary>
+            SQL query builder for update.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>
+            Returns the SqlCommand with the querystring and parameters
+            </returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.OracleQueryBuilderForUpdate(`0,System.String,System.Object,System.String,System.String,EasyData.EasySession)">
+            <summary>
+            Oracle query builder for update.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Returns the OracleCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.MySqlQueryBuilderForUpdate(`0,System.String,System.Object,System.String,System.String,EasyData.EasySession)">
+            <summary>
+             MySql query builder for update.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="query">The query.</param>
+            <param name="easySession">The easy session.</param>
+            <returns>Returns the  MySqlCommand with the querystring and parameters</returns>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.SetPropertyValue(`0,System.String)">
+            <summary>
+            Sets the property value.
+            </summary>
+            <param name="instance">The instance.</param>
+            <param name="property">The property.</param>
+        </member>
+        <member name="M:EasyData.EasyUpdate`1.GetPropertyColumn(System.Type,System.String)">
+            <summary>
+            Gets the property column.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="property">The property.</param>
+        </member>
+        <member name="T:EasyData.DB.DataReader`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EasyData.DB.DataReader`1.GetDBValue(`0,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="dataReader"></param>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.DataReader`1.GetDBValue(`0,System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="dataReader"></param>
+            <param name="strColumnName"></param>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.DB.Oracle.OracleParameters">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.DB.Oracle.OracleParameters.CreateInputParameter(System.String,System.Data.OracleClient.OracleType,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.Oracle.OracleParameters.CreateOutputParameter(System.String,System.Data.OracleClient.OracleType)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.Oracle.OracleParameters.CreateOutputParameter(System.String,System.Data.OracleClient.OracleType,System.Data.ParameterDirection)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <param name="Direction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.DB.Oracle.OracleParameters.CreateInputParameter(System.String,System.Data.OracleClient.OracleType,System.Object,System.Data.ParameterDirection)">
+            <summary>
+            
+            </summary>
+            <param name="ParameterName"></param>
+            <param name="DataType"></param>
+            <param name="Value"></param>
+            <param name="Direction"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.Core.EasyDataBase`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.#ctor">
+            <summary>
+            Constructor method
+            </summary>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Save(EasyData.EasySession)">
+            <summary>
+            Data insert method
+            </summary>
+            <param name="easySession">Session for the current connection and transaction</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.DeleteAll(EasyData.EasySession)">
+            <summary>
+            Delete all data in a table
+            </summary>
+            <param name="easySession">Session for the current connection and transaction</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.DeleteAllByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Delete all data in a table
+            </summary>
+            <param name="easySession">Session for the current connection and transaction</param>
+            <param name="where">Whare clause of the query to filter the result</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Delete(EasyData.EasySession)">
+            <summary>
+            Delete a record by the primary key of the record
+            </summary>
+            <param name="easySession">Session for the current connection and transaction</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Delete(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Deletes the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Delete(EasyData.EasySession,System.String)">
+            <summary>
+            Deletes the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Create(EasyData.EasySession)">
+            <summary>
+            Creates the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession)">
+            <summary>
+            Update a record by the primery key of the record
+            </summary>
+            <param name="easySession">The easy session.</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession,EasyData.EasyUpdate)">
+            <summary>
+            Updates the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="easyUpdate">The easy update.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.UpdateByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Updates the by custom where.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.UpdateByCustomWhere(EasyData.EasySession,System.String,EasyData.EasyUpdate)">
+            <summary>
+            Updates the by custom where.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <param name="easyUpdate">The easy update.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Updates the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession,System.String,System.Object,EasyData.EasyUpdate)">
+            <summary>
+            Updates the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easyUpdate">The easy update.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,EasyData.EasyLoad)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAllByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Finds all by custom where.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAllByCustomWhere(EasyData.EasySession,EasyData.EasyLoad,System.String)">
+            <summary>
+            Finds all by custom where.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="easyLoad">The easy load.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession,System.Object)">
+            <summary>
+            Finds the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="id">The id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession,System.Object,EasyData.EasyLoad)">
+            <summary>
+            Finds the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="id">The id.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession)">
+            <summary>
+            Finds the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession,EasyData.EasyLoad)">
+            <summary>
+            Finds the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String,System.Object,EasyData.EasyLoad)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String,EasyData.EasyLoad)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Count(EasyData.EasySession)">
+            <summary>
+            Counts the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.CountByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Counts the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Count(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Counts the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Count(EasyData.EasySession,System.String)">
+            <summary>
+            Counts the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession,System.Object)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="id">The id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.ExistsByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession,System.String)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <returns></returns>
+        </member>
+        <member name="T:EasyData.Core.EasyDataBase">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase.#ctor">
+            <summary>
+            Constructor method
+            </summary>
+        </member>
+        <member name="F:EasyData.Query.EasyLoad.None">
+            <summary>
+            Default, Loads all data for the current object and for the related objects
+            </summary>
+        </member>
+        <member name="F:EasyData.Query.EasyLoad.Simple">
+            <summary>
+            Loads data for the current object, without considering related objects.
+            </summary>
+        </member>
+        <member name="F:EasyData.Query.EasyLoad.Specified">
+            <summary>
+            Loads data for the specified properties of the current or related objects.
+            </summary>
+        </member>
+    </members>
+</doc>
