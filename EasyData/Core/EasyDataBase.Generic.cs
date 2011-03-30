@@ -115,7 +115,7 @@ namespace EasyData.Core
         /// <returns></returns>
         public bool UpdateByCustomWhere(EasySession easySession, string where)
         {
-            return Update(this.GetType(), where, easySession, EasyUpdate.False);
+            return Update(this, where, easySession, EasyUpdate.False);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace EasyData.Core
         /// <returns></returns>
         public bool UpdateByCustomWhere(EasySession easySession, string where, EasyUpdate easyUpdate)
         {
-            return Update(this.GetType(), where, easySession, easyUpdate);
+            return Update(this, where, easySession, easyUpdate);
         }
 
         /// <summary>

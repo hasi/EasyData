@@ -16,6 +16,287 @@
             <param name="DataType"></param>
             <returns></returns>
         </member>
+        <member name="T:EasyData.Core.EasyDataBase`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.#ctor">
+            <summary>
+            Constructor method
+            </summary>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Save(EasyData.EasySession)">
+            <summary>
+            Data insert method
+            </summary>
+            <param name="easySession">Session for the current connection and transaction</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.DeleteAll(EasyData.EasySession)">
+            <summary>
+            Delete all data in a table
+            </summary>
+            <param name="easySession">Session for the current connection and transaction</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.DeleteAllByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Delete all data in a table
+            </summary>
+            <param name="easySession">Session for the current connection and transaction</param>
+            <param name="where">Whare clause of the query to filter the result</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Delete(EasyData.EasySession)">
+            <summary>
+            Delete a record by the primary key of the record
+            </summary>
+            <param name="easySession">Session for the current connection and transaction</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Delete(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Deletes the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Delete(EasyData.EasySession,System.String)">
+            <summary>
+            Deletes the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Create(EasyData.EasySession)">
+            <summary>
+            Creates the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession)">
+            <summary>
+            Update a record by the primery key of the record
+            </summary>
+            <param name="easySession">The easy session.</param>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession,EasyData.EasyUpdate)">
+            <summary>
+            Updates the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="easyUpdate">The easy update.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.UpdateByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Updates the by custom where.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.UpdateByCustomWhere(EasyData.EasySession,System.String,EasyData.EasyUpdate)">
+            <summary>
+            Updates the by custom where.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <param name="easyUpdate">The easy update.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Updates the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession,System.String,System.Object,EasyData.EasyUpdate)">
+            <summary>
+            Updates the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easyUpdate">The easy update.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,EasyData.EasyLoad)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAllByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Finds all by custom where.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAllByCustomWhere(EasyData.EasySession,EasyData.EasyLoad,System.String)">
+            <summary>
+            Finds all by custom where.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="easyLoad">The easy load.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession,System.Object)">
+            <summary>
+            Finds the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="id">The id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession,System.Object,EasyData.EasyLoad)">
+            <summary>
+            Finds the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="id">The id.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession)">
+            <summary>
+            Finds the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession,EasyData.EasyLoad)">
+            <summary>
+            Finds the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String,System.Object,EasyData.EasyLoad)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String,EasyData.EasyLoad)">
+            <summary>
+            Finds all.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="easyLoad">The easy load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Count(EasyData.EasySession)">
+            <summary>
+            Counts the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.CountByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Counts the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Count(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Counts the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Count(EasyData.EasySession,System.String)">
+            <summary>
+            Counts the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession,System.Object)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="id">The id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.ExistsByCustomWhere(EasyData.EasySession,System.String)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="where">The where.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession,System.String,System.Object)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession,System.String)">
+            <summary>
+            Existses the specified easy session.
+            </summary>
+            <param name="easySession">The easy session.</param>
+            <param name="property">The property.</param>
+            <returns></returns>
+        </member>
         <member name="T:EasyData.Attributes.HasManyAttribute">
             <summary>
             
@@ -713,6 +994,21 @@
             </summary>
             <param name="query"></param>
             <returns></returns>
+        </member>
+        <member name="F:EasyData.Query.EasyLoad.None">
+            <summary>
+            Default, Loads all data for the current object and for the related objects
+            </summary>
+        </member>
+        <member name="F:EasyData.Query.EasyLoad.Simple">
+            <summary>
+            Loads data for the current object, without considering related objects.
+            </summary>
+        </member>
+        <member name="F:EasyData.Query.EasyLoad.Specified">
+            <summary>
+            Loads data for the specified properties of the current or related objects.
+            </summary>
         </member>
         <member name="T:EasyData.EasySave`1">
             <summary>
@@ -1573,6 +1869,17 @@
             </summary>
             <param name="type">The type.</param>
         </member>
+        <member name="T:EasyData.Core.EasyDataBase">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:EasyData.Core.EasyDataBase.#ctor">
+            <summary>
+            Constructor method
+            </summary>
+        </member>
         <member name="T:EasyData.EasyLoad">
             <summary>
             Nature of the data load
@@ -2278,313 +2585,6 @@
             <param name="Value"></param>
             <param name="Direction"></param>
             <returns></returns>
-        </member>
-        <member name="T:EasyData.Core.EasyDataBase`1">
-            <summary>
-            
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.#ctor">
-            <summary>
-            Constructor method
-            </summary>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Save(EasyData.EasySession)">
-            <summary>
-            Data insert method
-            </summary>
-            <param name="easySession">Session for the current connection and transaction</param>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.DeleteAll(EasyData.EasySession)">
-            <summary>
-            Delete all data in a table
-            </summary>
-            <param name="easySession">Session for the current connection and transaction</param>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.DeleteAllByCustomWhere(EasyData.EasySession,System.String)">
-            <summary>
-            Delete all data in a table
-            </summary>
-            <param name="easySession">Session for the current connection and transaction</param>
-            <param name="where">Whare clause of the query to filter the result</param>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Delete(EasyData.EasySession)">
-            <summary>
-            Delete a record by the primary key of the record
-            </summary>
-            <param name="easySession">Session for the current connection and transaction</param>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Delete(EasyData.EasySession,System.String,System.Object)">
-            <summary>
-            Deletes the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <param name="value">The value.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Delete(EasyData.EasySession,System.String)">
-            <summary>
-            Deletes the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Create(EasyData.EasySession)">
-            <summary>
-            Creates the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession)">
-            <summary>
-            Update a record by the primery key of the record
-            </summary>
-            <param name="easySession">The easy session.</param>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession,EasyData.EasyUpdate)">
-            <summary>
-            Updates the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="easyUpdate">The easy update.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.UpdateByCustomWhere(EasyData.EasySession,System.String)">
-            <summary>
-            Updates the by custom where.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="where">The where.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.UpdateByCustomWhere(EasyData.EasySession,System.String,EasyData.EasyUpdate)">
-            <summary>
-            Updates the by custom where.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="where">The where.</param>
-            <param name="easyUpdate">The easy update.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession,System.String,System.Object)">
-            <summary>
-            Updates the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <param name="value">The value.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Update(EasyData.EasySession,System.String,System.Object,EasyData.EasyUpdate)">
-            <summary>
-            Updates the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <param name="value">The value.</param>
-            <param name="easyUpdate">The easy update.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession)">
-            <summary>
-            Finds all.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,EasyData.EasyLoad)">
-            <summary>
-            Finds all.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="easyLoad">The easy load.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.FindAllByCustomWhere(EasyData.EasySession,System.String)">
-            <summary>
-            Finds all by custom where.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="where">The where.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.FindAllByCustomWhere(EasyData.EasySession,EasyData.EasyLoad,System.String)">
-            <summary>
-            Finds all by custom where.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="easyLoad">The easy load.</param>
-            <param name="where">The where.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession,System.Object)">
-            <summary>
-            Finds the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="id">The id.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession,System.Object,EasyData.EasyLoad)">
-            <summary>
-            Finds the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="id">The id.</param>
-            <param name="easyLoad">The easy load.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession)">
-            <summary>
-            Finds the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Find(EasyData.EasySession,EasyData.EasyLoad)">
-            <summary>
-            Finds the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="easyLoad">The easy load.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String,System.Object)">
-            <summary>
-            Finds all.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <param name="value">The value.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String,System.Object,EasyData.EasyLoad)">
-            <summary>
-            Finds all.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <param name="value">The value.</param>
-            <param name="easyLoad">The easy load.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String)">
-            <summary>
-            Finds all.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.FindAll(EasyData.EasySession,System.String,EasyData.EasyLoad)">
-            <summary>
-            Finds all.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <param name="easyLoad">The easy load.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Count(EasyData.EasySession)">
-            <summary>
-            Counts the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.CountByCustomWhere(EasyData.EasySession,System.String)">
-            <summary>
-            Counts the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="where">The where.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Count(EasyData.EasySession,System.String,System.Object)">
-            <summary>
-            Counts the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <param name="value">The value.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Count(EasyData.EasySession,System.String)">
-            <summary>
-            Counts the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession)">
-            <summary>
-            Existses the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession,System.Object)">
-            <summary>
-            Existses the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="id">The id.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.ExistsByCustomWhere(EasyData.EasySession,System.String)">
-            <summary>
-            Existses the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="where">The where.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession,System.String,System.Object)">
-            <summary>
-            Existses the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <param name="value">The value.</param>
-            <returns></returns>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase`1.Exists(EasyData.EasySession,System.String)">
-            <summary>
-            Existses the specified easy session.
-            </summary>
-            <param name="easySession">The easy session.</param>
-            <param name="property">The property.</param>
-            <returns></returns>
-        </member>
-        <member name="T:EasyData.Core.EasyDataBase">
-            <summary>
-            
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="M:EasyData.Core.EasyDataBase.#ctor">
-            <summary>
-            Constructor method
-            </summary>
-        </member>
-        <member name="F:EasyData.Query.EasyLoad.None">
-            <summary>
-            Default, Loads all data for the current object and for the related objects
-            </summary>
-        </member>
-        <member name="F:EasyData.Query.EasyLoad.Simple">
-            <summary>
-            Loads data for the current object, without considering related objects.
-            </summary>
-        </member>
-        <member name="F:EasyData.Query.EasyLoad.Specified">
-            <summary>
-            Loads data for the specified properties of the current or related objects.
-            </summary>
         </member>
     </members>
 </doc>
