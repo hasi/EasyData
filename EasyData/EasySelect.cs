@@ -6098,6 +6098,7 @@ namespace EasyData
         protected void GetPropertyColumn(Type type, string property)
         {
             string propertyColumn = string.Empty;
+            string propertyType = string.Empty;
             PropertyInfo[] classProperties = type.GetProperties();
 
             foreach (PropertyInfo classProperty in classProperties)
@@ -6121,6 +6122,7 @@ namespace EasyData
                                 {
                                     propertyColumn = classProperty.Name;
                                 }
+                                propertyType = classProperty.PropertyType.ToString();
                                 break;
                             case "BelongsToAttribute":
                                 BelongsToAttribute belongAttr = (BelongsToAttribute)customAttr[i];
@@ -6131,6 +6133,22 @@ namespace EasyData
                                 else
                                 {
                                     propertyColumn = classProperty.Name;
+                                }
+
+                                //get foreignkey data type
+                                Assembly assembly = Assembly.LoadFrom(assemblyPath);
+                                Type foreignClassPropType = assembly.GetType(classProperty.PropertyType.FullName);
+                                
+                                PropertyInfo foreignPropType = null;
+                                if (belongAttr.PropertyRef != null)
+                                {
+                                    foreignPropType = foreignClassPropType.GetProperty(belongAttr.PropertyRef);
+                                    propertyType = foreignPropType.PropertyType.ToString();
+                                }
+                                else
+                                {
+                                    GetPrimaryKeyColumn(foreignClassPropType);
+                                    propertyType = propertyTypeByType;
                                 }
                                 break;
                             case "PropertyAttribute":
@@ -6143,13 +6161,14 @@ namespace EasyData
                                 {
                                     propertyColumn = classProperty.Name;
                                 }
+                                propertyType = classProperty.PropertyType.ToString();
                                 break;
                             default:
                                 break;
                         }
                     }
 
-                    propertyTypeByType = classProperty.PropertyType.ToString();
+                    propertyTypeByType = propertyType;
                     propertyColumnByType = propertyColumn;
                     break;
                 }
