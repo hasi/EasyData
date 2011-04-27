@@ -15,6 +15,7 @@ using Devart.Data.MySql;
 using EasyData.DB.Sql;
 using EasyData.DB.Oracle;
 using EasyData.DB.MySql;
+using EasyData.Core;
 
 
 namespace EasyData
@@ -25,8 +26,9 @@ namespace EasyData
     /// <typeparam name="T">Type of the entity class</typeparam>
     public class EasySelect<T>
     {
-        string assemblyPath = ConfigurationSettings.AppSettings["ProjectPath"] + ConfigurationSettings.AppSettings["Assesmbly"];
-        string dbType = ConfigurationSettings.AppSettings["DBType"];
+        string projPath = ConfigurationSettings.AppSettings[Constants.PROJECT_PATH];
+        string assemblyPath = ConfigurationSettings.AppSettings[Constants.ASSEMBLY_PATH];
+        string dbType = ConfigurationSettings.AppSettings[Constants.DB_TYPE];
 
         static string pKeyColumn;
         static string fKeyColumn;
@@ -1390,8 +1392,7 @@ namespace EasyData
                                         break;
                                     }
 
-                                    Assembly assembly = Assembly.LoadFrom(assemblyPath);
-                                    Type foreignClassPropType = assembly.GetType(classProperty.PropertyType.FullName);
+                                    Type foreignClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                                     PropertyInfo[] foreignClassProperties = foreignClassPropType.GetProperties();
                                     EasyDataAttribute easySubAttr = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignClassPropType, typeof(EasyDataAttribute));
 
@@ -1503,8 +1504,7 @@ namespace EasyData
                                         break;
                                     }
 
-                                    Assembly assemblyOneToOne = Assembly.LoadFrom(assemblyPath);
-                                    Type foreignOneToOneClassPropType = assemblyOneToOne.GetType(classProperty.PropertyType.FullName);
+                                    Type foreignOneToOneClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                                     PropertyInfo[] foreignOneToOneClassProperties = foreignOneToOneClassPropType.GetProperties();
                                     EasyDataAttribute easyOneToOneAttr = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignOneToOneClassPropType, typeof(EasyDataAttribute));
 
@@ -1841,8 +1841,7 @@ namespace EasyData
                                                             int fieldCount = subResultDataReader.FieldCount;
                                                             if (fieldCount != 0)
                                                             {
-                                                                Assembly assemblySubHasAndBelongs = Assembly.LoadFrom(assemblyPath);
-                                                                Type foreignSubHasAndBelongsClassPropType = assemblySubHasAndBelongs.GetType(HasAndBelongsToManyAttr.MapType.FullName);
+                                                                Type foreignSubHasAndBelongsClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, HasAndBelongsToManyAttr.MapType.FullName);
                                                                 PropertyInfo[] foreignSubHasAndBelongsClassProperties = foreignSubHasAndBelongsClassPropType.GetProperties();
                                                                 EasyDataAttribute easyAttrSubHasAndBelongs = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignSubHasAndBelongsClassPropType, typeof(EasyDataAttribute));
 
@@ -2127,8 +2126,7 @@ namespace EasyData
                                                             int fieldCount = subResultDataReader.FieldCount;
                                                             if (fieldCount != 0)
                                                             {
-                                                                Assembly assemblySubHasMany = Assembly.LoadFrom(assemblyPath);
-                                                                Type foreignSubHasManyClassPropType = assemblySubHasMany.GetType(HasManyAttr.MapType.FullName);
+                                                                Type foreignSubHasManyClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, HasManyAttr.MapType.FullName);
                                                                 PropertyInfo[] foreignSubHasManyClassProperties = foreignSubHasManyClassPropType.GetProperties();
                                                                 EasyDataAttribute easyAttrSubHasMany = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignSubHasManyClassPropType, typeof(EasyDataAttribute));
 
@@ -2399,8 +2397,7 @@ namespace EasyData
                                         break;
                                     }
 
-                                    Assembly assembly = Assembly.LoadFrom(assemblyPath);
-                                    Type foreignClassPropType = assembly.GetType(classProperty.PropertyType.FullName);
+                                    Type foreignClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                                     PropertyInfo[] foreignClassProperties = foreignClassPropType.GetProperties();
                                     EasyDataAttribute easySubAttr = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignClassPropType, typeof(EasyDataAttribute));
 
@@ -2512,8 +2509,7 @@ namespace EasyData
                                         break;
                                     }
 
-                                    Assembly assemblyOneToOne = Assembly.LoadFrom(assemblyPath);
-                                    Type foreignOneToOneClassPropType = assemblyOneToOne.GetType(classProperty.PropertyType.FullName);
+                                    Type foreignOneToOneClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                                     PropertyInfo[] foreignOneToOneClassProperties = foreignOneToOneClassPropType.GetProperties();
                                     EasyDataAttribute easyOneToOneAttr = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignOneToOneClassPropType, typeof(EasyDataAttribute));
 
@@ -2850,8 +2846,7 @@ namespace EasyData
                                                             int fieldCount = subResultDataReader.FieldCount;
                                                             if (fieldCount != 0)
                                                             {
-                                                                Assembly assemblySubHasAndBelongs = Assembly.LoadFrom(assemblyPath);
-                                                                Type foreignSubHasAndBelongsClassPropType = assemblySubHasAndBelongs.GetType(HasAndBelongsToManyAttr.MapType.FullName);
+                                                                Type foreignSubHasAndBelongsClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, HasAndBelongsToManyAttr.MapType.FullName);
                                                                 PropertyInfo[] foreignSubHasAndBelongsClassProperties = foreignSubHasAndBelongsClassPropType.GetProperties();
                                                                 EasyDataAttribute easyAttrSubHasAndBelongs = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignSubHasAndBelongsClassPropType, typeof(EasyDataAttribute));
 
@@ -3136,8 +3131,7 @@ namespace EasyData
                                                             int fieldCount = subResultDataReader.FieldCount;
                                                             if (fieldCount != 0)
                                                             {
-                                                                Assembly assemblySubHasMany = Assembly.LoadFrom(assemblyPath);
-                                                                Type foreignSubHasManyClassPropType = assemblySubHasMany.GetType(HasManyAttr.MapType.FullName);
+                                                                Type foreignSubHasManyClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, HasManyAttr.MapType.FullName);
                                                                 PropertyInfo[] foreignSubHasManyClassProperties = foreignSubHasManyClassPropType.GetProperties();
                                                                 EasyDataAttribute easyAttrSubHasMany = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignSubHasManyClassPropType, typeof(EasyDataAttribute));
 
@@ -3408,8 +3402,7 @@ namespace EasyData
                                         break;
                                     }
 
-                                    Assembly assembly = Assembly.LoadFrom(assemblyPath);
-                                    Type foreignClassPropType = assembly.GetType(classProperty.PropertyType.FullName);
+                                    Type foreignClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                                     PropertyInfo[] foreignClassProperties = foreignClassPropType.GetProperties();
                                     EasyDataAttribute easySubAttr = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignClassPropType, typeof(EasyDataAttribute));
 
@@ -3521,8 +3514,7 @@ namespace EasyData
                                         break;
                                     }
 
-                                    Assembly assemblyOneToOne = Assembly.LoadFrom(assemblyPath);
-                                    Type foreignOneToOneClassPropType = assemblyOneToOne.GetType(classProperty.PropertyType.FullName);
+                                    Type foreignOneToOneClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                                     PropertyInfo[] foreignOneToOneClassProperties = foreignOneToOneClassPropType.GetProperties();
                                     EasyDataAttribute easyOneToOneAttr = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignOneToOneClassPropType, typeof(EasyDataAttribute));
 
@@ -3859,8 +3851,7 @@ namespace EasyData
                                                             int fieldCount = subResultDataReader.FieldCount;
                                                             if (fieldCount != 0)
                                                             {
-                                                                Assembly assemblySubHasAndBelongs = Assembly.LoadFrom(assemblyPath);
-                                                                Type foreignSubHasAndBelongsClassPropType = assemblySubHasAndBelongs.GetType(HasAndBelongsToManyAttr.MapType.FullName);
+                                                                Type foreignSubHasAndBelongsClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, HasAndBelongsToManyAttr.MapType.FullName);
                                                                 PropertyInfo[] foreignSubHasAndBelongsClassProperties = foreignSubHasAndBelongsClassPropType.GetProperties();
                                                                 EasyDataAttribute easyAttrSubHasAndBelongs = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignSubHasAndBelongsClassPropType, typeof(EasyDataAttribute));
 
@@ -4145,8 +4136,7 @@ namespace EasyData
                                                             int fieldCount = subResultDataReader.FieldCount;
                                                             if (fieldCount != 0)
                                                             {
-                                                                Assembly assemblySubHasMany = Assembly.LoadFrom(assemblyPath);
-                                                                Type foreignSubHasManyClassPropType = assemblySubHasMany.GetType(HasManyAttr.MapType.FullName);
+                                                                Type foreignSubHasManyClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, HasManyAttr.MapType.FullName);
                                                                 PropertyInfo[] foreignSubHasManyClassProperties = foreignSubHasManyClassPropType.GetProperties();
                                                                 EasyDataAttribute easyAttrSubHasMany = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignSubHasManyClassPropType, typeof(EasyDataAttribute));
 
@@ -4386,8 +4376,7 @@ namespace EasyData
                                 fKeyColumn = classProperty.Name;
                             }
 
-                            Assembly assembly = Assembly.LoadFrom(assemblyPath);
-                            Type foreignClassPropType = assembly.GetType(classProperty.PropertyType.FullName);
+                            Type foreignClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                             PropertyInfo foreignPropType = null;
 
                             EasyDataAttribute easyAttrBelongsTo = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignClassPropType, typeof(EasyDataAttribute));
@@ -4581,8 +4570,7 @@ namespace EasyData
 
                             this.GetPrimaryKeyColumn(type);
                             pKeyColumn = propertyColumnByType;
-                            Assembly assemblyOneToOne = Assembly.LoadFrom(assemblyPath);
-                            Type foreignOneToOneClassPropType = assemblyOneToOne.GetType(classProperty.PropertyType.FullName);
+                            Type foreignOneToOneClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                             PropertyInfo foreignOneToOnePropType = null;
 
                             EasyDataAttribute easyAttrOneToOne = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignOneToOneClassPropType, typeof(EasyDataAttribute));
@@ -4966,8 +4954,7 @@ namespace EasyData
                                 fKeyColumn = classProperty.Name;
                             }
 
-                            Assembly assembly = Assembly.LoadFrom(assemblyPath);
-                            Type foreignClassPropType = assembly.GetType(classProperty.PropertyType.FullName);
+                            Type foreignClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                             PropertyInfo foreignPropType = null;
 
                             EasyDataAttribute easyAttrBelongsTo = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignClassPropType, typeof(EasyDataAttribute));
@@ -5161,8 +5148,7 @@ namespace EasyData
 
                             this.GetPrimaryKeyColumn(type);
                             pKeyColumn = propertyColumnByType;
-                            Assembly assemblyOneToOne = Assembly.LoadFrom(assemblyPath);
-                            Type foreignOneToOneClassPropType = assemblyOneToOne.GetType(classProperty.PropertyType.FullName);
+                            Type foreignOneToOneClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                             PropertyInfo foreignOneToOnePropType = null;
 
                             EasyDataAttribute easyAttrOneToOne = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignOneToOneClassPropType, typeof(EasyDataAttribute));
@@ -5546,8 +5532,7 @@ namespace EasyData
                                 fKeyColumn = classProperty.Name;
                             }
 
-                            Assembly assembly = Assembly.LoadFrom(assemblyPath);
-                            Type foreignClassPropType = assembly.GetType(classProperty.PropertyType.FullName);
+                            Type foreignClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                             PropertyInfo foreignPropType = null;
 
                             EasyDataAttribute easyAttrBelongsTo = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignClassPropType, typeof(EasyDataAttribute));
@@ -5741,8 +5726,7 @@ namespace EasyData
 
                             this.GetPrimaryKeyColumn(type);
                             pKeyColumn = propertyColumnByType;
-                            Assembly assemblyOneToOne = Assembly.LoadFrom(assemblyPath);
-                            Type foreignOneToOneClassPropType = assemblyOneToOne.GetType(classProperty.PropertyType.FullName);
+                            Type foreignOneToOneClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                             PropertyInfo foreignOneToOnePropType = null;
 
                             EasyDataAttribute easyAttrOneToOne = (EasyDataAttribute)Attribute.GetCustomAttribute(foreignOneToOneClassPropType, typeof(EasyDataAttribute));
@@ -6136,8 +6120,7 @@ namespace EasyData
                                 }
 
                                 //get foreignkey data type
-                                Assembly assembly = Assembly.LoadFrom(assemblyPath);
-                                Type foreignClassPropType = assembly.GetType(classProperty.PropertyType.FullName);
+                                Type foreignClassPropType = LoadAssembly.GetPropTypeFromAssembly(projPath, assemblyPath, classProperty.PropertyType.FullName);
                                 
                                 PropertyInfo foreignPropType = null;
                                 if (belongAttr.PropertyRef != null)

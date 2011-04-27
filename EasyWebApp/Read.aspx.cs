@@ -26,10 +26,10 @@ namespace EasyWebApp
             //SimpleReadTest();
             //OneToOneReadTest();
             //OneToManyReadTest();
-            //ManyToOneReadTest();
+            ManyToOneReadTest();
             //ManyToManyReadTest();
 
-            ReadByPropertyTest();
+            //ReadByPropertyTest();
         }
 
         [Test]

@@ -67,8 +67,10 @@
     <Compile Include="Attributes\PrimaryKeyAttribute.cs" />
     <Compile Include="Core\CheckGuid.cs" />
     <Compile Include="Core\CheckSQLDate.cs" />
+    <Compile Include="Core\Constants.cs" />
     <Compile Include="Core\EasyDataBase.cs" />
     <Compile Include="Core\EasyDataBase.Generic.cs" />
+    <Compile Include="Core\LoadAssembly.cs" />
     <Compile Include="DB\DataReader.cs" />
     <Compile Include="DB\MySql\MySqlDBTypes.cs" />
     <Compile Include="DB\MySql\MySqlParameters.cs" />
