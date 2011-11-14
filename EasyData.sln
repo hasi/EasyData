@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyData", "EasyData\EasyData.csproj", "{2D21A749-2A1E-4317-BAA6-C94408A8340B}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{33EA9EA6-1E44-4BB0-9AB8-725F7E3722C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyData", "EasyData\EasyData.csproj", "{2D21A749-2A1E-4317-BAA6-C94408A8340B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyWebApp", "EasyWebApp\EasyWebApp.csproj", "{72D12600-B551-4422-AC25-424248DA22C1}"
 EndProject

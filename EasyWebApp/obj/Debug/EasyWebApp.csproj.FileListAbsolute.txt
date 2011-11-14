@@ -21,5 +21,5 @@ D:\EasyData\EasyWebApp\bin\EasyWebApp.pdb
 D:\EasyData\EasyWebApp\bin\EasyData.pdb
 D:\EasyData\EasyWebApp\obj\Debug\EasyWebApp.dll
 D:\EasyData\EasyWebApp\obj\Debug\EasyWebApp.pdb
-D:\EasyData\EasyWebApp\bin\EasyData.dll
 D:\EasyData\EasyWebApp\bin\EasyData.xml
+D:\EasyData\EasyWebApp\bin\EasyData.dll

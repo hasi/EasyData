@@ -53,9 +53,13 @@ namespace EasyData.DB.Sql
             {
                 result = SqlDbType.DateTime;
             }
-            else if (DataType == "binary" || DataType == "Byte[]")
+            else if (DataType == "binary")
             {
                 result = SqlDbType.Binary;
+            }
+            else if (DataType == "Byte[]")
+            {
+                result = SqlDbType.VarBinary;
             }
             else if (DataType == "bit" || DataType == "Boolean")
             {

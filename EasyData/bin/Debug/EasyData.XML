@@ -1159,6 +1159,20 @@
             <param name="transaction">SqlTransation variable to handle the transaction</param>
             <returns>Return the SqlCommand to execute</returns>
         </member>
+        <member name="T:EasyData.Core.LoadAssembly">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EasyData.Core.LoadAssembly.GetPropTypeFromAssembly(System.String,System.String,System.String)">
+            <summary>
+            Gets the prop type from assembly.
+            </summary>
+            <param name="projPath">The proj path.</param>
+            <param name="assemblyPath">The assembly path.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns></returns>
+        </member>
         <member name="T:EasyData.Attributes.HasAndBelongsToManyAttribute">
             <summary>
             
@@ -2545,6 +2559,11 @@
             <param name="index"></param>
             <returns></returns>
         </member>
+        <member name="T:EasyData.Core.Constants">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:EasyData.DB.Oracle.OracleParameters">
             <summary>
             
@@ -2585,25 +2604,6 @@
             <param name="Value"></param>
             <param name="Direction"></param>
             <returns></returns>
-        </member>
-        <member name="T:EasyData.Core.LoadAssembly">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:EasyData.Core.LoadAssembly.GetPropTypeFromAssembly(System.String,System.String,System.String)">
-            <summary>
-            Gets the prop type from assembly.
-            </summary>
-            <param name="projPath">The proj path.</param>
-            <param name="assemblyPath">The assembly path.</param>
-            <param name="propertyName">Name of the property.</param>
-            <returns></returns>
-        </member>
-        <member name="T:EasyData.Core.Constants">
-            <summary>
-            
-            </summary>
         </member>
     </members>
 </doc>

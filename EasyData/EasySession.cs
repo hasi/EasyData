@@ -7,6 +7,9 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data.OracleClient;
 using Devart.Data.MySql;
+using EasyData.Core;
+using System.Reflection;
+using System.IO;
 
 namespace EasyData
 {
@@ -15,8 +18,8 @@ namespace EasyData
     /// </summary>
     public class EasySession : IDisposable
     {
-        string connecString = ConfigurationSettings.AppSettings["ConnectionString"];
-        string dbType = ConfigurationSettings.AppSettings["DBType"];
+        string connecString = ConfigurationManager.AppSettings[Constants.CONNECTION_STRING];
+        string dbType = ConfigurationManager.AppSettings[Constants.DB_TYPE];
 
         private SqlConnection _connection;
         private SqlTransaction _transaction;

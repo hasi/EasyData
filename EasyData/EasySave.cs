@@ -24,9 +24,9 @@ namespace EasyData
     /// <typeparam name="T">Type of the entity class</typeparam>
     public class EasySave<T> 
     {
-        string projPath = ConfigurationSettings.AppSettings[Constants.PROJECT_PATH];
-        string assemblyPath = ConfigurationSettings.AppSettings[Constants.ASSEMBLY_PATH];
-        string dbType = ConfigurationSettings.AppSettings[Constants.DB_TYPE];
+        string projPath = Assembly.GetExecutingAssembly().CodeBase.Remove(Assembly.GetExecutingAssembly().CodeBase.IndexOf("bin"));
+        string assemblyPath = ConfigurationManager.AppSettings[Constants.ASSEMBLY_PATH];
+        string dbType = ConfigurationManager.AppSettings[Constants.DB_TYPE];
 
         static PrimaryKeyType keyType;
         static object key;
@@ -68,9 +68,9 @@ namespace EasyData
         {
             string query = string.Empty;
 
-            using (var command = this.InsertQueryBuilder(instance, query, easySession.Connection, easySession.Transaction))
+            try
             {
-                try
+                using (var command = this.InsertQueryBuilder(instance, query, easySession.Connection, easySession.Transaction))
                 {
                     command.ExecuteNonQuery();
                     object primeryKey = null;
@@ -101,14 +101,14 @@ namespace EasyData
                             }
                         }
                     }
-                    
+
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             return instance;
@@ -124,9 +124,9 @@ namespace EasyData
         {
             string query = string.Empty;
 
-            using (var command = this.OracleInsertQueryBuilder(instance, query, easySession.OConnection, easySession.OTransaction))
+            try
             {
-                try
+                using (var command = this.OracleInsertQueryBuilder(instance, query, easySession.OConnection, easySession.OTransaction))
                 {
                     command.ExecuteNonQuery();
                     object primeryKey = null;
@@ -154,14 +154,14 @@ namespace EasyData
                             }
                         }
                     }
-                    
+
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             return instance;
@@ -177,12 +177,12 @@ namespace EasyData
         {
             string query = string.Empty;
 
-            using (var command = this.MySqlInsertQueryBuilder(instance, query, easySession.MConnection, easySession.MTransaction))
+            try
             {
-                try
+                using (var command = this.MySqlInsertQueryBuilder(instance, query, easySession.MConnection, easySession.MTransaction))
                 {
                     command.ExecuteNonQuery();
-                    
+
                     object primeryKey = null;
                     if (keyType.Equals(PrimaryKeyType.Identity) || keyType.Equals(PrimaryKeyType.Native))
                     {
@@ -208,14 +208,14 @@ namespace EasyData
                             }
                         }
                     }
-                    
+
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             return instance;
@@ -985,6 +985,10 @@ namespace EasyData
 
                 for (int i = 0; i < customAttr.Length; i++)
                 {
+                    if (i > 0)
+                        if (columnName != string.Empty)
+                            break;
+
                     Type attrType = customAttr[i].GetType();
                     switch (attrType.Name)
                     {
@@ -1342,6 +1346,10 @@ namespace EasyData
 
                 for (int i = 0; i < customAttr.Length; i++)
                 {
+                    if (i > 0)
+                        if (columnName != string.Empty)
+                            break;
+
                     Type attrType = customAttr[i].GetType();
                     switch (attrType.Name)
                     {
@@ -1727,6 +1735,10 @@ namespace EasyData
 
                 for (int i = 0; i < customAttr.Length; i++)
                 {
+                    if (i > 0)
+                        if (columnName != string.Empty)
+                            break;
+
                     Type attrType = customAttr[i].GetType();
                     switch (attrType.Name)
                     {

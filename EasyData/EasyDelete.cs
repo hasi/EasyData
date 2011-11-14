@@ -13,6 +13,7 @@ using Devart.Data.MySql;
 using EasyData.DB.MySql;
 using EasyData.DB.Oracle;
 using System.Data.OracleClient;
+using EasyData.Core;
 
 namespace EasyData
 {
@@ -22,8 +23,8 @@ namespace EasyData
     /// <typeparam name="T">Type of the entity class</typeparam>
     public class EasyDelete<T>
     {
-        string assemblyPath = ConfigurationSettings.AppSettings["ProjectPath"] + ConfigurationSettings.AppSettings["Assesmbly"];
-        string dbType = ConfigurationSettings.AppSettings["DBType"];
+        string assemblyPath = Assembly.GetExecutingAssembly().CodeBase.Remove(Assembly.GetExecutingAssembly().CodeBase.IndexOf("bin")) + ConfigurationManager.AppSettings[Constants.ASSEMBLY_PATH];
+        string dbType = ConfigurationManager.AppSettings[Constants.DB_TYPE];
         
         static object propertyValueByInstance;
 
@@ -93,6 +94,7 @@ namespace EasyData
             {
                 propertyValueByInstance = value;
             }
+
             if (dbType == null || dbType == string.Empty || dbType == "SQL")
             {
                 return this.SQLDelete(type, property, propertyValueByInstance, null, easySession);
@@ -124,21 +126,23 @@ namespace EasyData
         {
             string query = string.Empty;
             bool isSuccess = false;
-            using (var command = this.SqlQueryBuilderForDelete(type, property, value, where, query, easySession))
+
+            try
             {
-                try
+                using (var command = this.SqlQueryBuilderForDelete(type, property, value, where, query, easySession))
                 {
                     command.ExecuteNonQuery();
                     easySession.SetCommit = true;
                     isSuccess = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    isSuccess = false;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                isSuccess = false;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return isSuccess;
         }
 
@@ -153,21 +157,23 @@ namespace EasyData
         {
             string query = string.Empty;
             bool isSuccess = false;
-            using (var command = this.OracleQueryBuilderForDelete(type, property, value, where, query, easySession))
+
+            try
             {
-                try
+                using (var command = this.OracleQueryBuilderForDelete(type, property, value, where, query, easySession))
                 {
                     command.ExecuteNonQuery();
                     easySession.SetCommit = true;
                     isSuccess = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    isSuccess = false;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                isSuccess = false;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return isSuccess;
         }
 
@@ -182,21 +188,23 @@ namespace EasyData
         {
             string query = string.Empty;
             bool isSuccess = false;
-            using (var command = this.MySqlQueryBuilderForDelete(type, property, value, where, query, easySession))
+
+            try
             {
-                try
+                using (var command = this.MySqlQueryBuilderForDelete(type, property, value, where, query, easySession))
                 {
                     command.ExecuteNonQuery();
                     easySession.SetCommit = true;
                     isSuccess = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    isSuccess = false;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                isSuccess = false;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return isSuccess;
         }
 
@@ -210,22 +218,23 @@ namespace EasyData
         {
             string query = string.Empty;
             bool isSuccess = false;
-            using (var command = this.SqlQueryBuilderForDelete(instance, query, easySession))
+
+            try
             {
-                try
+                using (var command = this.SqlQueryBuilderForDelete(instance, query, easySession))
                 {
                     command.ExecuteNonQuery();
                     easySession.SetCommit = true;
                     isSuccess = true;
-
-                }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    isSuccess = false;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
                 }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                isSuccess = false;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return isSuccess;
         }
 
@@ -239,22 +248,23 @@ namespace EasyData
         {
             string query = string.Empty;
             bool isSuccess = false;
-            using (var command = this.OracleQueryBuilderForDelete(instance, query, easySession))
+            
+            try
             {
-                try
+                using (var command = this.OracleQueryBuilderForDelete(instance, query, easySession))
                 {
                     command.ExecuteNonQuery();
                     easySession.SetCommit = true;
                     isSuccess = true;
-
-                }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    isSuccess = false;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
                 }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                isSuccess = false;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return isSuccess;
         }
 
@@ -268,22 +278,23 @@ namespace EasyData
         {
             string query = string.Empty;
             bool isSuccess = false;
-            using (var command = this.MySqlQueryBuilderForDelete(instance, query, easySession))
+
+            try
             {
-                try
+                using (var command = this.MySqlQueryBuilderForDelete(instance, query, easySession))
                 {
                     command.ExecuteNonQuery();
                     easySession.SetCommit = true;
                     isSuccess = true;
-
-                }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    isSuccess = false;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
                 }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                isSuccess = false;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return isSuccess;
         }
 

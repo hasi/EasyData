@@ -18,6 +18,7 @@ D:\EasyData\EasyWinApp\bin\Debug\EasyWinApp.exe
 D:\EasyData\EasyWinApp\bin\Debug\EasyWinApp.pdb
 D:\EasyData\EasyWinApp\obj\Debug\ResolveAssemblyReference.cache
 D:\EasyData\EasyWinApp\obj\Debug\EasyWinApp.Properties.Resources.resources
-D:\EasyData\EasyWinApp\obj\Debug\EasyWinApp.csproj.GenerateResource.Cache
 D:\EasyData\EasyWinApp\obj\Debug\EasyWinApp.exe
 D:\EasyData\EasyWinApp\obj\Debug\EasyWinApp.pdb
+D:\EasyData\EasyWinApp\obj\Debug\GenerateResource-ResGen.read.1.tlog
+D:\EasyData\EasyWinApp\obj\Debug\GenerateResource-ResGen.write.1.tlog

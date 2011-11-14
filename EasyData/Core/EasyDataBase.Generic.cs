@@ -9,6 +9,7 @@ namespace EasyData.Core
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
+    [Serializable]
     public abstract class EasyDataBase<T> where T : class
     {
         /// <summary>

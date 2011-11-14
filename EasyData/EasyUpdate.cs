@@ -25,9 +25,9 @@ namespace EasyData
     /// <typeparam name="T">Type of the entity class</typeparam>
     public class EasyUpdate<T>
     {
-        string projPath = ConfigurationSettings.AppSettings[Constants.PROJECT_PATH];
-        string assemblyPath = ConfigurationSettings.AppSettings[Constants.ASSEMBLY_PATH];
-        string dbType = ConfigurationSettings.AppSettings[Constants.DB_TYPE];
+        string projPath = Assembly.GetExecutingAssembly().CodeBase.Remove(Assembly.GetExecutingAssembly().CodeBase.IndexOf("bin"));
+        string assemblyPath = ConfigurationManager.AppSettings[Constants.ASSEMBLY_PATH];
+        string dbType = ConfigurationManager.AppSettings[Constants.DB_TYPE];
 
         static PrimaryKeyType keyType;
         static object key;
@@ -131,9 +131,9 @@ namespace EasyData
             bool isSuccess;
             string query = string.Empty;
 
-            using (var command = this.SQLQueryBuilderForUpdate(instance, property, value, where, query, easySession))
+            try
             {
-                try
+                using (var command = this.SQLQueryBuilderForUpdate(instance, property, value, where, query, easySession))
                 {
                     command.ExecuteNonQuery();
                     isSuccess = true;
@@ -155,12 +155,12 @@ namespace EasyData
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    isSuccess = false;
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                isSuccess = false;
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             return isSuccess;
@@ -177,9 +177,9 @@ namespace EasyData
             bool isSuccess;
             string query = string.Empty;
 
-            using (var command = this.OracleQueryBuilderForUpdate(instance, property, value, where, query, easySession))
+            try
             {
-                try
+                using (var command = this.OracleQueryBuilderForUpdate(instance, property, value, where, query, easySession))
                 {
                     command.ExecuteNonQuery();
                     isSuccess = true;
@@ -201,12 +201,12 @@ namespace EasyData
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    isSuccess = false;
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                isSuccess = false;
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             return isSuccess;
@@ -223,9 +223,9 @@ namespace EasyData
             bool isSuccess;
             string query = string.Empty;
 
-            using (var command = this.MySqlQueryBuilderForUpdate(instance, property, value, where, query, easySession))
+            try
             {
-                try
+                using (var command = this.MySqlQueryBuilderForUpdate(instance, property, value, where, query, easySession))
                 {
                     command.ExecuteNonQuery();
                     isSuccess = true;
@@ -247,12 +247,12 @@ namespace EasyData
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    isSuccess = false;
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                isSuccess = false;
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             return isSuccess;
@@ -266,40 +266,41 @@ namespace EasyData
         /// <param name="easySession">The easy session.</param>
         protected void DeleteAllAssociationRecordsSql(T instance, string query, EasySession easySession)
         {
-            using (var command = new SqlCommand(query, easySession.Connection, easySession.Transaction))
+            try
             {
-                command.CommandType = CommandType.Text;
-
-                StringBuilder sbDelete = new StringBuilder();
-                sbDelete.Append("DELETE FROM ");
-                StringBuilder sbTable = new StringBuilder();
-                if (hasAndBelongsToManyAttr.Schema != null)
+                using (var command = new SqlCommand(query, easySession.Connection, easySession.Transaction))
                 {
-                    sbTable.Append(hasAndBelongsToManyAttr.Schema);
-                    sbTable.Append(".");
-                }
+                    command.CommandType = CommandType.Text;
 
-                sbTable.Append(hasAndBelongsToManyAttr.Table);
+                    StringBuilder sbDelete = new StringBuilder();
+                    sbDelete.Append("DELETE FROM ");
+                    StringBuilder sbTable = new StringBuilder();
+                    if (hasAndBelongsToManyAttr.Schema != null)
+                    {
+                        sbTable.Append(hasAndBelongsToManyAttr.Schema);
+                        sbTable.Append(".");
+                    }
 
-                StringBuilder sbDeleteQuery = new StringBuilder();
-                sbDeleteQuery.Append(sbDelete.ToString());
-                sbDeleteQuery.Append(sbTable.ToString());
-                sbDeleteQuery.Append(" WHERE ");
-                sbDeleteQuery.Append(keyColumn);
-                sbDeleteQuery.Append(" = ");
-                sbDeleteQuery.Append(key);
+                    sbTable.Append(hasAndBelongsToManyAttr.Table);
 
-                command.CommandText = sbDeleteQuery.ToString();
-                try
-                {
+                    StringBuilder sbDeleteQuery = new StringBuilder();
+                    sbDeleteQuery.Append(sbDelete.ToString());
+                    sbDeleteQuery.Append(sbTable.ToString());
+                    sbDeleteQuery.Append(" WHERE ");
+                    sbDeleteQuery.Append(keyColumn);
+                    sbDeleteQuery.Append(" = ");
+                    sbDeleteQuery.Append(key);
+
+                    command.CommandText = sbDeleteQuery.ToString();
+
                     command.ExecuteNonQuery();
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
         }
 
@@ -311,40 +312,41 @@ namespace EasyData
         /// <param name="easySession">The easy session.</param>
         protected void DeleteAllAssociationRecordsOracle(T instance, string query, EasySession easySession)
         {
-            using (var command = new OracleCommand(query, easySession.OConnection, easySession.OTransaction))
+            try
             {
-                command.CommandType = CommandType.Text;
-
-                StringBuilder sbDelete = new StringBuilder();
-                sbDelete.Append("DELETE FROM ");
-                StringBuilder sbTable = new StringBuilder();
-                if (hasAndBelongsToManyAttr.Schema != null)
+                using (var command = new OracleCommand(query, easySession.OConnection, easySession.OTransaction))
                 {
-                    sbTable.Append(hasAndBelongsToManyAttr.Schema);
-                    sbTable.Append(".");
-                }
+                    command.CommandType = CommandType.Text;
 
-                sbTable.Append(hasAndBelongsToManyAttr.Table);
+                    StringBuilder sbDelete = new StringBuilder();
+                    sbDelete.Append("DELETE FROM ");
+                    StringBuilder sbTable = new StringBuilder();
+                    if (hasAndBelongsToManyAttr.Schema != null)
+                    {
+                        sbTable.Append(hasAndBelongsToManyAttr.Schema);
+                        sbTable.Append(".");
+                    }
 
-                StringBuilder sbDeleteQuery = new StringBuilder();
-                sbDeleteQuery.Append(sbDelete.ToString());
-                sbDeleteQuery.Append(sbTable.ToString());
-                sbDeleteQuery.Append(" WHERE ");
-                sbDeleteQuery.Append(keyColumn);
-                sbDeleteQuery.Append(" = ");
-                sbDeleteQuery.Append(key);
+                    sbTable.Append(hasAndBelongsToManyAttr.Table);
 
-                command.CommandText = sbDeleteQuery.ToString();
-                try
-                {
+                    StringBuilder sbDeleteQuery = new StringBuilder();
+                    sbDeleteQuery.Append(sbDelete.ToString());
+                    sbDeleteQuery.Append(sbTable.ToString());
+                    sbDeleteQuery.Append(" WHERE ");
+                    sbDeleteQuery.Append(keyColumn);
+                    sbDeleteQuery.Append(" = ");
+                    sbDeleteQuery.Append(key);
+
+                    command.CommandText = sbDeleteQuery.ToString();
+
                     command.ExecuteNonQuery();
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
         }
 
@@ -356,40 +358,41 @@ namespace EasyData
         /// <param name="easySession">The easy session.</param>
         protected void DeleteAllAssociationRecordsMySql(T instance, string query, EasySession easySession)
         {
-            using (var command = new MySqlCommand(query, easySession.MConnection, easySession.MTransaction))
+            try
             {
-                command.CommandType = CommandType.Text;
-
-                StringBuilder sbDelete = new StringBuilder();
-                sbDelete.Append("DELETE FROM ");
-                StringBuilder sbTable = new StringBuilder();
-                if (hasAndBelongsToManyAttr.Schema != null)
+                using (var command = new MySqlCommand(query, easySession.MConnection, easySession.MTransaction))
                 {
-                    sbTable.Append(hasAndBelongsToManyAttr.Schema);
-                    sbTable.Append(".");
-                }
+                    command.CommandType = CommandType.Text;
 
-                sbTable.Append(hasAndBelongsToManyAttr.Table);
+                    StringBuilder sbDelete = new StringBuilder();
+                    sbDelete.Append("DELETE FROM ");
+                    StringBuilder sbTable = new StringBuilder();
+                    if (hasAndBelongsToManyAttr.Schema != null)
+                    {
+                        sbTable.Append(hasAndBelongsToManyAttr.Schema);
+                        sbTable.Append(".");
+                    }
 
-                StringBuilder sbDeleteQuery = new StringBuilder();
-                sbDeleteQuery.Append(sbDelete.ToString());
-                sbDeleteQuery.Append(sbTable.ToString());
-                sbDeleteQuery.Append(" WHERE ");
-                sbDeleteQuery.Append(keyColumn);
-                sbDeleteQuery.Append(" = ");
-                sbDeleteQuery.Append(key);
+                    sbTable.Append(hasAndBelongsToManyAttr.Table);
 
-                command.CommandText = sbDeleteQuery.ToString();
-                try
-                {
+                    StringBuilder sbDeleteQuery = new StringBuilder();
+                    sbDeleteQuery.Append(sbDelete.ToString());
+                    sbDeleteQuery.Append(sbTable.ToString());
+                    sbDeleteQuery.Append(" WHERE ");
+                    sbDeleteQuery.Append(keyColumn);
+                    sbDeleteQuery.Append(" = ");
+                    sbDeleteQuery.Append(key);
+
+                    command.CommandText = sbDeleteQuery.ToString();
+
                     command.ExecuteNonQuery();
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
         }
 
@@ -450,6 +453,10 @@ namespace EasyData
 
                 for (int i = 0; i < customAttr.Length; i++)
                 {
+                    if (i > 0)
+                        if (columnName != string.Empty)
+                            break;
+
                     Type attrType = customAttr[i].GetType();
                     switch (attrType.Name)
                     {
@@ -630,6 +637,10 @@ namespace EasyData
 
                 for (int i = 0; i < customAttr.Length; i++)
                 {
+                    if (i > 0)
+                        if (columnName != string.Empty)
+                            break;
+
                     Type attrType = customAttr[i].GetType();
                     switch (attrType.Name)
                     {
@@ -810,6 +821,10 @@ namespace EasyData
 
                 for (int i = 0; i < customAttr.Length; i++)
                 {
+                    if (i > 0)
+                        if (columnName != string.Empty)
+                            break;
+
                     Type attrType = customAttr[i].GetType();
                     switch (attrType.Name)
                     {
@@ -1068,6 +1083,10 @@ namespace EasyData
 
                 for (int i = 0; i < customAttr.Length; i++)
                 {
+                    if (i > 0)
+                        if (columnName != string.Empty)
+                            break;
+
                     Type attrType = customAttr[i].GetType();
                     switch (attrType.Name)
                     {
@@ -1356,6 +1375,10 @@ namespace EasyData
 
                 for (int i = 0; i < customAttr.Length; i++)
                 {
+                    if (i > 0)
+                        if (columnName != string.Empty)
+                            break;
+
                     Type attrType = customAttr[i].GetType();
                     switch (attrType.Name)
                     {
@@ -1640,6 +1663,10 @@ namespace EasyData
 
                 for (int i = 0; i < customAttr.Length; i++)
                 {
+                    if (i > 0)
+                        if (columnName != string.Empty)
+                            break;
+
                     Type attrType = customAttr[i].GetType();
                     switch (attrType.Name)
                     {

@@ -26,9 +26,9 @@ namespace EasyData
     /// <typeparam name="T">Type of the entity class</typeparam>
     public class EasySelect<T>
     {
-        string projPath = ConfigurationSettings.AppSettings[Constants.PROJECT_PATH];
-        string assemblyPath = ConfigurationSettings.AppSettings[Constants.ASSEMBLY_PATH];
-        string dbType = ConfigurationSettings.AppSettings[Constants.DB_TYPE];
+        string projPath = Assembly.GetExecutingAssembly().CodeBase.Remove(Assembly.GetExecutingAssembly().CodeBase.IndexOf("bin"));
+        string assemblyPath = ConfigurationManager.AppSettings[Constants.ASSEMBLY_PATH];
+        string dbType = ConfigurationManager.AppSettings[Constants.DB_TYPE];
 
         static string pKeyColumn;
         static string fKeyColumn;
@@ -432,18 +432,18 @@ namespace EasyData
             object count;
             bool isExists = false;
 
-            using (var command = this.CountQueryBuilder(type, where, value, property, query, easySession))
+            try
             {
-                try
+                using (var command = this.CountQueryBuilder(type, where, value, property, query, easySession))
                 {
                     count = command.ExecuteScalar();
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             int returnCount = Convert.ToInt32(count);
@@ -473,18 +473,18 @@ namespace EasyData
             object count;
             bool isExists = false;
 
-            using (var command = this.OracleCountQueryBuilder(type, where, value, property, query, easySession))
+            try
             {
-                try
+                using (var command = this.OracleCountQueryBuilder(type, where, value, property, query, easySession))
                 {
                     count = command.ExecuteScalar();
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             int returnCount = Convert.ToInt32(count);
@@ -514,18 +514,18 @@ namespace EasyData
             object count;
             bool isExists = false;
 
-            using (var command = this.MySqlCountQueryBuilder(type, where, value, property, query, easySession))
+            try
             {
-                try
+                using (var command = this.MySqlCountQueryBuilder(type, where, value, property, query, easySession))
                 {
                     count = command.ExecuteScalar();
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             int returnCount = Convert.ToInt32(count);
@@ -554,18 +554,18 @@ namespace EasyData
             string query = string.Empty;
             object count;
 
-            using (var command = this.CountQueryBuilder(type, where, value, property, query, easySession))
+            try
             {
-                try
+                using (var command = this.CountQueryBuilder(type, where, value, property, query, easySession))
                 {
                     count = command.ExecuteScalar();
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             int returnCount = Convert.ToInt32(count);
@@ -585,18 +585,18 @@ namespace EasyData
             string query = string.Empty;
             object count;
 
-            using (var command = this.OracleCountQueryBuilder(type, where, value, property, query, easySession))
+            try
             {
-                try
+                using (var command = this.OracleCountQueryBuilder(type, where, value, property, query, easySession))
                 {
                     count = command.ExecuteScalar();
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             int returnCount = Convert.ToInt32(count);
@@ -616,18 +616,18 @@ namespace EasyData
             string query = string.Empty;
             object count;
 
-            using (var command = this.MySqlCountQueryBuilder(type, where, value, property, query, easySession))
+            try
             {
-                try
+                using (var command = this.MySqlCountQueryBuilder(type, where, value, property, query, easySession))
                 {
                     count = command.ExecuteScalar();
                     easySession.SetCommit = true;
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
             }
 
             int returnCount = Convert.ToInt32(count);
@@ -911,9 +911,9 @@ namespace EasyData
             string query = string.Empty;
             List<T> returnResult = new List<T>();
 
-            using (var command = this.SelectQueryBuilder(type, null, property, value, query, easySession))
+            try
             {
-                try
+                using (var command = this.SelectQueryBuilder(type, null, property, value, query, easySession))
                 {
                     using (SqlDataReader resultDataReader = command.ExecuteReader())
                     {
@@ -934,12 +934,13 @@ namespace EasyData
                         easySession.SetCommit = true;
                     }
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return returnResult;
         }
 
@@ -956,9 +957,9 @@ namespace EasyData
             string query = string.Empty;
             List<T> returnResult = new List<T>();
 
-            using (var command = this.OracleSelectQueryBuilder(type, null, property, value, query, easySession))
+            try
             {
-                try
+                using (var command = this.OracleSelectQueryBuilder(type, null, property, value, query, easySession))
                 {
                     using (OracleDataReader resultDataReader = command.ExecuteReader())
                     {
@@ -979,12 +980,13 @@ namespace EasyData
                         easySession.SetCommit = true;
                     }
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return returnResult;
         }
 
@@ -1001,9 +1003,9 @@ namespace EasyData
             string query = string.Empty;
             List<T> returnResult = new List<T>();
 
-            using (var command = this.MySqlSelectQueryBuilder(type, null, property, value, query, easySession))
+            try
             {
-                try
+                using (var command = this.MySqlSelectQueryBuilder(type, null, property, value, query, easySession))
                 {
                     using (MySqlDataReader resultDataReader = command.ExecuteReader())
                     {
@@ -1024,12 +1026,13 @@ namespace EasyData
                         easySession.SetCommit = true;
                     }
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return returnResult;
         }
 
@@ -1045,9 +1048,9 @@ namespace EasyData
             string query = string.Empty;
             object resultObject = Activator.CreateInstance(typeof(T));
 
-            using (var command = this.SelectQueryBuilder(type, null, null, id, query, easySession))
+            try
             {
-                try
+                using (var command = this.SelectQueryBuilder(type, null, null, id, query, easySession))
                 {
                     using (SqlDataReader resultDataReader = command.ExecuteReader())
                     {
@@ -1056,12 +1059,13 @@ namespace EasyData
                         easySession.SetCommit = true;
                     }
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return (T)Convert.ChangeType(resultObject, typeof(T));
         }
 
@@ -1077,9 +1081,9 @@ namespace EasyData
             string query = string.Empty;
             object resultObject = Activator.CreateInstance(typeof(T));
 
-            using (var command = this.OracleSelectQueryBuilder(type, null, null, id, query, easySession))
+            try
             {
-                try
+                using (var command = this.OracleSelectQueryBuilder(type, null, null, id, query, easySession))
                 {
                     using (OracleDataReader resultDataReader = command.ExecuteReader())
                     {
@@ -1088,12 +1092,13 @@ namespace EasyData
                         easySession.SetCommit = true;
                     }
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return (T)Convert.ChangeType(resultObject, typeof(T));
         }
 
@@ -1109,9 +1114,9 @@ namespace EasyData
             string query = string.Empty;
             object resultObject = Activator.CreateInstance(typeof(T));
 
-            using (var command = this.MySqlSelectQueryBuilder(type, null, null, id, query, easySession))
+            try
             {
-                try
+                using (var command = this.MySqlSelectQueryBuilder(type, null, null, id, query, easySession))
                 {
                     using (MySqlDataReader resultDataReader = command.ExecuteReader())
                     {
@@ -1120,12 +1125,13 @@ namespace EasyData
                         easySession.SetCommit = true;
                     }
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return (T)Convert.ChangeType(resultObject, typeof(T));
         }
 
@@ -1139,10 +1145,10 @@ namespace EasyData
         {
             string query = string.Empty;
             List<T> returnResult = new List<T>();
-            
-            using (var command = this.SelectQueryBuilder(type, where, null, null, query, easySession))
+
+            try
             {
-                try
+                using (var command = this.SelectQueryBuilder(type, where, null, null, query, easySession))
                 {
                     using (SqlDataReader resultDataReader = command.ExecuteReader())
                     {
@@ -1163,12 +1169,13 @@ namespace EasyData
                         easySession.SetCommit = true;
                     }
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return returnResult;
         }
 
@@ -1183,9 +1190,9 @@ namespace EasyData
             string query = string.Empty;
             List<T> returnResult = new List<T>();
 
-            using (var command = this.OracleSelectQueryBuilder(type, where, null, null, query, easySession))
+            try
             {
-                try
+                using (var command = this.OracleSelectQueryBuilder(type, where, null, null, query, easySession))
                 {
                     using (OracleDataReader resultDataReader = command.ExecuteReader())
                     {
@@ -1206,12 +1213,13 @@ namespace EasyData
                         easySession.SetCommit = true;
                     }
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return returnResult;
         }
 
@@ -1226,10 +1234,11 @@ namespace EasyData
             string query = string.Empty;
             List<T> returnResult = new List<T>();
 
-            using (var command = this.MySqlSelectQueryBuilder(type, where, null, null, query, easySession))
+            try
             {
-                try
+                using (var command = this.MySqlSelectQueryBuilder(type, where, null, null, query, easySession))
                 {
+
                     using (MySqlDataReader resultDataReader = command.ExecuteReader())
                     {
                         while (true)
@@ -1249,12 +1258,13 @@ namespace EasyData
                         easySession.SetCommit = true;
                     }
                 }
-                catch (Exception ex)
-                {
-                    easySession.SetRollback = true;
-                    throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
-                }
             }
+            catch (Exception ex)
+            {
+                easySession.SetRollback = true;
+                throw new ApplicationException("Internal Error!, Please contact administrator with a screen shot of error screen...", ex);
+            }
+            
             return returnResult;
         }
 
@@ -1406,7 +1416,7 @@ namespace EasyData
                                             {
                                                 case "PrimaryKeyAttribute":
 
-                                                    PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignCustomAttr[i];
+                                                    PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignCustomAttr[j];
                                                     if (priSubKeyAttr.Column != null)
                                                     {
                                                         if (easySubAttr.Table != null)
@@ -1445,7 +1455,7 @@ namespace EasyData
                                                     break;
 
                                                 case "PropertyAttribute":
-                                                    PropertyAttribute propSubAttr = (PropertyAttribute)foreignCustomAttr[i];
+                                                    PropertyAttribute propSubAttr = (PropertyAttribute)foreignCustomAttr[j];
                                                     if (propSubAttr.Column != null)
                                                     {
                                                         if (easySubAttr.Table != null)
@@ -1518,7 +1528,7 @@ namespace EasyData
                                             {
                                                 case "PrimaryKeyAttribute":
 
-                                                    PrimaryKeyAttribute priOneToOneKeyAttr = (PrimaryKeyAttribute)foreignOneToOneCustomAttr[i];
+                                                    PrimaryKeyAttribute priOneToOneKeyAttr = (PrimaryKeyAttribute)foreignOneToOneCustomAttr[j];
                                                     if (priOneToOneKeyAttr.Column != null)
                                                     {
                                                         if (easyOneToOneAttr.Table != null)
@@ -1557,7 +1567,7 @@ namespace EasyData
                                                     break;
 
                                                 case "PropertyAttribute":
-                                                    PropertyAttribute propOneToOneAttr = (PropertyAttribute)foreignOneToOneCustomAttr[i];
+                                                    PropertyAttribute propOneToOneAttr = (PropertyAttribute)foreignOneToOneCustomAttr[j];
                                                     if (propOneToOneAttr.Column != null)
                                                     {
                                                         if (easyOneToOneAttr.Table != null)
@@ -1855,7 +1865,7 @@ namespace EasyData
                                                                         {
                                                                             case "PrimaryKeyAttribute":
 
-                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasAndBelongsCustomAttr[i];
+                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasAndBelongsCustomAttr[j];
                                                                                 if (priSubKeyAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasAndBelongs.Table != null)
@@ -1892,7 +1902,7 @@ namespace EasyData
                                                                                 break;
 
                                                                             case "PropertyAttribute":
-                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasAndBelongsCustomAttr[i];
+                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasAndBelongsCustomAttr[j];
                                                                                 if (propSubAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasAndBelongs.Table != null)
@@ -2140,7 +2150,7 @@ namespace EasyData
                                                                         {
                                                                             case "PrimaryKeyAttribute":
 
-                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasManyCustomAttr[i];
+                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasManyCustomAttr[j];
                                                                                 if (priSubKeyAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasMany.Table != null)
@@ -2177,7 +2187,7 @@ namespace EasyData
                                                                                 break;
 
                                                                             case "PropertyAttribute":
-                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasManyCustomAttr[i];
+                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasManyCustomAttr[j];
                                                                                 if (propSubAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasMany.Table != null)
@@ -2411,7 +2421,7 @@ namespace EasyData
                                             {
                                                 case "PrimaryKeyAttribute":
 
-                                                    PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignCustomAttr[i];
+                                                    PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignCustomAttr[j];
                                                     if (priSubKeyAttr.Column != null)
                                                     {
                                                         if (easySubAttr.Table != null)
@@ -2450,7 +2460,7 @@ namespace EasyData
                                                     break;
 
                                                 case "PropertyAttribute":
-                                                    PropertyAttribute propSubAttr = (PropertyAttribute)foreignCustomAttr[i];
+                                                    PropertyAttribute propSubAttr = (PropertyAttribute)foreignCustomAttr[j];
                                                     if (propSubAttr.Column != null)
                                                     {
                                                         if (easySubAttr.Table != null)
@@ -2523,7 +2533,7 @@ namespace EasyData
                                             {
                                                 case "PrimaryKeyAttribute":
 
-                                                    PrimaryKeyAttribute priOneToOneKeyAttr = (PrimaryKeyAttribute)foreignOneToOneCustomAttr[i];
+                                                    PrimaryKeyAttribute priOneToOneKeyAttr = (PrimaryKeyAttribute)foreignOneToOneCustomAttr[j];
                                                     if (priOneToOneKeyAttr.Column != null)
                                                     {
                                                         if (easyOneToOneAttr.Table != null)
@@ -2562,7 +2572,7 @@ namespace EasyData
                                                     break;
 
                                                 case "PropertyAttribute":
-                                                    PropertyAttribute propOneToOneAttr = (PropertyAttribute)foreignOneToOneCustomAttr[i];
+                                                    PropertyAttribute propOneToOneAttr = (PropertyAttribute)foreignOneToOneCustomAttr[j];
                                                     if (propOneToOneAttr.Column != null)
                                                     {
                                                         if (easyOneToOneAttr.Table != null)
@@ -2860,7 +2870,7 @@ namespace EasyData
                                                                         {
                                                                             case "PrimaryKeyAttribute":
 
-                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasAndBelongsCustomAttr[i];
+                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasAndBelongsCustomAttr[j];
                                                                                 if (priSubKeyAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasAndBelongs.Table != null)
@@ -2897,7 +2907,7 @@ namespace EasyData
                                                                                 break;
 
                                                                             case "PropertyAttribute":
-                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasAndBelongsCustomAttr[i];
+                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasAndBelongsCustomAttr[j];
                                                                                 if (propSubAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasAndBelongs.Table != null)
@@ -3145,7 +3155,7 @@ namespace EasyData
                                                                         {
                                                                             case "PrimaryKeyAttribute":
 
-                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasManyCustomAttr[i];
+                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasManyCustomAttr[j];
                                                                                 if (priSubKeyAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasMany.Table != null)
@@ -3182,7 +3192,7 @@ namespace EasyData
                                                                                 break;
 
                                                                             case "PropertyAttribute":
-                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasManyCustomAttr[i];
+                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasManyCustomAttr[j];
                                                                                 if (propSubAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasMany.Table != null)
@@ -3416,7 +3426,7 @@ namespace EasyData
                                             {
                                                 case "PrimaryKeyAttribute":
 
-                                                    PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignCustomAttr[i];
+                                                    PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignCustomAttr[j];
                                                     if (priSubKeyAttr.Column != null)
                                                     {
                                                         if (easySubAttr.Table != null)
@@ -3455,7 +3465,7 @@ namespace EasyData
                                                     break;
 
                                                 case "PropertyAttribute":
-                                                    PropertyAttribute propSubAttr = (PropertyAttribute)foreignCustomAttr[i];
+                                                    PropertyAttribute propSubAttr = (PropertyAttribute)foreignCustomAttr[j];
                                                     if (propSubAttr.Column != null)
                                                     {
                                                         if (easySubAttr.Table != null)
@@ -3528,7 +3538,7 @@ namespace EasyData
                                             {
                                                 case "PrimaryKeyAttribute":
 
-                                                    PrimaryKeyAttribute priOneToOneKeyAttr = (PrimaryKeyAttribute)foreignOneToOneCustomAttr[i];
+                                                    PrimaryKeyAttribute priOneToOneKeyAttr = (PrimaryKeyAttribute)foreignOneToOneCustomAttr[j];
                                                     if (priOneToOneKeyAttr.Column != null)
                                                     {
                                                         if (easyOneToOneAttr.Table != null)
@@ -3567,7 +3577,7 @@ namespace EasyData
                                                     break;
 
                                                 case "PropertyAttribute":
-                                                    PropertyAttribute propOneToOneAttr = (PropertyAttribute)foreignOneToOneCustomAttr[i];
+                                                    PropertyAttribute propOneToOneAttr = (PropertyAttribute)foreignOneToOneCustomAttr[j];
                                                     if (propOneToOneAttr.Column != null)
                                                     {
                                                         if (easyOneToOneAttr.Table != null)
@@ -3865,7 +3875,7 @@ namespace EasyData
                                                                         {
                                                                             case "PrimaryKeyAttribute":
 
-                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasAndBelongsCustomAttr[i];
+                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasAndBelongsCustomAttr[j];
                                                                                 if (priSubKeyAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasAndBelongs.Table != null)
@@ -3902,7 +3912,7 @@ namespace EasyData
                                                                                 break;
 
                                                                             case "PropertyAttribute":
-                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasAndBelongsCustomAttr[i];
+                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasAndBelongsCustomAttr[j];
                                                                                 if (propSubAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasAndBelongs.Table != null)
@@ -4150,7 +4160,7 @@ namespace EasyData
                                                                         {
                                                                             case "PrimaryKeyAttribute":
 
-                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasManyCustomAttr[i];
+                                                                                PrimaryKeyAttribute priSubKeyAttr = (PrimaryKeyAttribute)foreignSubHasManyCustomAttr[j];
                                                                                 if (priSubKeyAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasMany.Table != null)
@@ -4187,7 +4197,7 @@ namespace EasyData
                                                                                 break;
 
                                                                             case "PropertyAttribute":
-                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasManyCustomAttr[i];
+                                                                                PropertyAttribute propSubAttr = (PropertyAttribute)foreignSubHasManyCustomAttr[j];
                                                                                 if (propSubAttr.Column != null)
                                                                                 {
                                                                                     if (easyAttrSubHasMany.Table != null)
